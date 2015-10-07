@@ -1,7 +1,8 @@
 // IMPORT CTIME
 //
 //
-//
+//include the linkedlist cpp and header file from cs 24
+//work on template class
 
 template <class DlinkedList>
 class DoublyLinkedList {
