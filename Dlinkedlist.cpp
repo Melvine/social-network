@@ -1,35 +1,52 @@
 #include "DlinkedList.h"
 
-DoublyLinkedList::DoublyLinkedList(){
+template <class D> DoublyLinkedList<D>::DoublyLinkedList(){
 	root = NULL;
 }
-DoublyLinkedList::DoublyLinkedList(Data d){
-	Node *root = new Node(d);
+template <class D> DoublyLinkedList<D>::DoublyLinkedList(D data){
+	Node p{data};
+	root = p;
 }
-DoublyLinkedList::~DoublyLinkedList(){
-
+template <class D> DoublyLinkedList<D>::~DoublyLinkedList(){
+	if(root == NULL){
+		return;
+	}
+	else{
+		Node *tmp = root;
+		//get to the end of the linkedlist
+		while(tmp->next != NULL){
+			tmp = tmp->next;
+		}
+		//deletes every node starting from the back
+		while(tmp != NULL){
+			Node *unwanted = tmp;
+			unwanted.~Node();
+			tmp = tmp->previous;
+			delete unwanted
+		}
+	}
 }
-void DoublyLinkedList::Add(Data d){
-	Node p = new Node(d);
+template <class D> void DoublyLinkedList<D>::add(D data){
+	Node p{data};
 	if(root == NULL){
 		root = p
 	}
 	else{
-		tmp = root;
+		Node *tmp = root;
 		while(tmp->next != NULL){
 			tmp = tmp->next;
 		}
 		tmp->next = p;
 	}
 }
-void DoublyLinkedList::Remove(Data d){
+template <class D> void DoublyLinkedList<D>::remove(D data){
 	if(root == NULL){
 		return;
 	}
 	else{
-		tmp = root;
+		Node *tmp = root;
 		while(tmp != NULL){
-			if(tmp.data == d){
+			if(tmp->data == data){
 				(tmp->previous)->next = tmp->next;
 				delete tmp;
 				return "found user for removable, should be removed";
@@ -39,23 +56,18 @@ void DoublyLinkedList::Remove(Data d){
 		return;
 	}
 }
-
-Node::Node(){
-	this.d = null;
-    Node *previous = null;
-    Node *next = null;
+template <class D> Node<D>::Node(){
+	this.data = NULL;
+  previous = NULL;
+  next = NULL;
 }
-Node::Node(Data d){
-	this.d = d;
-    Node *previous = null;
-    Node *next = null;
+template <class D> Node<D>::Node(D data){
+	this.data = data;
+  previous = NULL;
+  next = NULL;
 }
-Data::Data(){
-
-}
-Data::Data(Data d){
-
-}
-Data::~Data(){
-
+template <class D> Node<D>::~Node(){
+	delete &data;
+  delete previous;
+  delete next;
 }
