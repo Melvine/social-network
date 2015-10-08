@@ -1,20 +1,38 @@
+#ifndef DOUBLYLINKEDLIST_H
+#define DOUBLYLINKEDLIST_H
+
 template <class DlinkedList>
 class DoublyLinkedList {
   public:
     DoublyLinkedList();
-    DoublyLinkedList(data);
+    DoublyLinkedList(Data);
     ~DoublyLinkedList();
-    void Add(data);
-    void Remove(data);
+
+    void add(Data);
+    void remove(Data);
    
   private:
-    Data data
+	Node *root
+};
+
+class Node{
+  public:
+    Node();
+    Node(Data);
+    ~Node();
+   
+  private:
+    Data d;
+    Node *previous;
+    Node *next;
 };
 
 template <class Data>
-class DoublyLinkedList {
+class Data {
   public:
     Data();
-    Data(data);
+    Data(Data);
     ~Data();
 };
+
+#endif
