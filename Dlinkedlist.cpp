@@ -33,7 +33,7 @@ template <class D> void DoublyLinkedList<D>::add(D data){
 	}
 	else{
 		Node *tmp = root;
-		while(tmp->next != NULL){
+		while(tmp != NULL){
 			tmp = tmp->next;
 		}
 		tmp->next = p;

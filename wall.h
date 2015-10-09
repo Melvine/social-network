@@ -1,3 +1,6 @@
+#ifndef WALL_H
+#define WALL_H
+
 class Wall {
     public:
       Wall();
@@ -6,9 +9,7 @@ class Wall {
       void remove(WallPost); 
       getWallList();    
     private:
-      Vector <WallPost> WallList;
- 
-        
+      DoublyLinkedList <WallPost> wallList;
 };
         
 class WallPost {
@@ -30,3 +31,5 @@ class WallPost {
         int id;      
            
 };  
+
+#endif
