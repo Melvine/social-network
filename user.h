@@ -2,20 +2,39 @@ class User {
   public:
     User ();
     ~User ();
-    User (username, password); 
-    
+    User (username, password);
+
     void editUserName(username);
     void editName(name);
     void editPassword(password);
     void removeWallPost(WallPost);
-    String displayInfo();
-    
+    void editPhoneNumber(phonenumber);
+    string displayInfo();
+
+
     importUser();
-  
+
   private:
     Wall userWall;
-    String username;
-    String name;
-    String password;
-    
+    string username;
+    string name;
+    string password;
+    string phoneNumber;
+
+}
+
+class userNetwork {
+    public:
+        userNetwork();
+        ~userNetwork();
+
+        void validateUser();
+        void addUser(User);
+        void removeUser(User);
+        getUserList();
+
+
+
+    private:
+        DoublyLinkedList <userNetwork> userList;
 }
