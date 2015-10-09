@@ -25,11 +25,9 @@ class WallPost {
         
         
     private:
-        String message;
-        time_t time;
-        String author;
-        int id;      
-           
+        string message;
+        time_t timer;
+        string author;      
 };  
 
 #endif

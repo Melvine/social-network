@@ -1,4 +1,7 @@
 #include "wall.h"
+#include "DLinkedList.h"
+#include <string>
+#include <time.h>  
 
 Wall::Wall(){
   DoublyLinkedList <WallPost> wallList{};
@@ -13,20 +16,30 @@ Wall::~Wall(){
   wallList.~DoublyLinkedList();
   delete wallList;
 }
-void Wall::add(WallPost){
-  
+void Wall::add(WallPost wallpost){
+  wallList.add(wallpost);
 }
-void Wall::remove(WallPost); 
-string Wall::getWallList();    
+void Wall::remove(WallPost wallpost){
+  wallList.remove(wallpost);
+}
+string Wall::getWallList(){
+  string result = "";
+  //incomplete
+}    
 
 
+WallPost::WallPost(){
+  message = "";
+  author = "";
+  time{&timer};
+}
+WallPost::WallPost(message){
+  message = message;
+  author = "";
+  time{&timer};
+}
 
-WallPost::WallPost();
-WallPost::WallPost(message);
-WallPost::~WallPost();
-
-void WallPost::validateMessage();
-void WallPost::makeMessage(message);
-void WallPost::editMessage(message);
-void WallPost::removeMessage(message);
+//void WallPost::validateMessage(){}
+void WallPost::editMessage(message){}
+void WallPost::removeMessage(message){}
    
