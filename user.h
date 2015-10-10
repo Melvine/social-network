@@ -11,7 +11,6 @@ class User {
     void editPhoneNumber(phonenumber);
     string displayInfo();
 
-
     importUser();
 
   private:
@@ -20,21 +19,18 @@ class User {
     string name;
     string password;
     string phoneNumber;
+};
 
-}
-
-class userNetwork {
+class UserNetwork {
     public:
         userNetwork();
-        ~userNetwork();
+        ~UserNetwork();
 
         void validateUser();
         void addUser(User);
         void removeUser(User);
         getUserList();
 
-
-
     private:
-        DoublyLinkedList <userNetwork> userList;
-}
+        DoublyLinkedList <UserNetwork> userList;
+};

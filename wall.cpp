@@ -3,14 +3,10 @@
 #include <string>
 #include <time.h>  
 
-Wall::Wall(){
-  DoublyLinkedList <WallPost> wallList{};
-}
-Wall::Wall(D data){
-  DoublyLinkedList <WallPost> wallList{data};
-  wallList.data = data ;
-    Node *previous;
-    Node *next;
+using namespace std;
+
+Wall::Wall(WallPost wallpost){
+  DoublyLinkedList<WallPost> wallList(wallpost);
 }
 Wall::~Wall(){
   wallList.~DoublyLinkedList();
@@ -23,20 +19,21 @@ void Wall::remove(WallPost wallpost){
   wallList.remove(wallpost);
 }
 string Wall::getWallList(){
-  string result = "";
+  string result = message; //test using message variable
   //incomplete
-}    
-
+  return result
+}
 
 WallPost::WallPost(){
   message = "";
   author = "";
-  time{&timer};
+  timer = time{NULL};
 }
+
 WallPost::WallPost(message){
-  message = message;
+  this.message = message;
   author = "";
-  time{&timer};
+  timer = time{NULL};
 }
 
 //void WallPost::validateMessage(){}

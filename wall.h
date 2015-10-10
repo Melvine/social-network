@@ -1,27 +1,19 @@
 #ifndef WALL_H
 #define WALL_H
+#include <string>
 
-class Wall {
-    public:
-      Wall();
-      ~Wall();
-      void add(WallPost);
-      void remove(WallPost); 
-      getWallList();    
-    private:
-      DoublyLinkedList <WallPost> wallList;
-};
-        
+using namespace std;
+
 class WallPost {
     public:
-        WallPost(message);
         WallPost();
+        WallPost(string);
         ~WallPost();
         
         void validateMessage();
-        void makeMessage(message);
-        void editMessage(message);
-        void removeMessage(message);
+        void makeMessage(string);
+        void editMessage(string);
+        void removeMessage(string);
         
         
     private:
@@ -29,5 +21,16 @@ class WallPost {
         time_t timer;
         string author;      
 };  
+
+class Wall {
+    public:
+      Wall(WallPost);
+      ~Wall();
+      void add(WallPost);
+      void remove(WallPost); 
+      string getWallList();    
+    private:
+      DoublyLinkedList <WallPost> wallList;
+};
 
 #endif

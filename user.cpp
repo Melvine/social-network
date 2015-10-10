@@ -39,7 +39,7 @@ void User::editPhoneNumber(string phoneNumber_){
 
 void User::removeWallPost(Wall wallPost_){
     delete wallPost_;
-
+    
 }
 
 string displayInfo(User user){
