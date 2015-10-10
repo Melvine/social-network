@@ -21,7 +21,6 @@ class User {
 
 
   private:
-    Wall userWall;
     string username;
     string name;
     string password;
@@ -34,8 +33,8 @@ class UserNetwork {
         ~UserNetwork();
 
         void validateUser();
-        void addUser(User);
-        void removeUser(User);
+        void add(User);
+        void remove(User);
         string getUserList();
 
     private:

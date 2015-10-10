@@ -80,10 +80,10 @@ void User::editPhoneNumber(string _phoneNumber){
 
 }
 
-void User::removeWallPost(Wall _wallPost){
-    delete _wallPost;
+// void User::removeWallPost(Wall _wallPost){
+//     delete _wallPost;
 
-}
+// }
 
 /*
 string displayInfo(User user){
@@ -91,15 +91,4 @@ string displayInfo(User user){
 
 }
 */
-
-void UserNetwork::addUser(User user){
-    userList.add(user);
-
-}
-
-
-void UserNetwork::removeUser(User user){
-    userList.remove(user);
-
-}
 
