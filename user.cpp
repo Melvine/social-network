@@ -1,4 +1,6 @@
 #include "user.h"
+#include "DlinkedList.h"
+#include "wall.h"
 #include <iostream>
 #include <string>
 
@@ -6,38 +8,40 @@ using namespace std;
 
 
 UserNetwork::UserNetwork(User user){
-    DoublyLinkedList<User> userNetwork (user);
+    DoublyLinkedList<User> userList (user);
 
 }
 
-UserNetwork:~UserNetwork(){
-    userNetwork.~DoublyLinkedList();
+UserNetwork::~UserNetwork(){
+    userList.~DoublyLinkedList();
 }
 
 
 void UserNetwork::add(User user){
-    userNetwork.add(user);
+    userList.add(user);
 
 }
 
 
 void UserNetwork::remove(User user){
-    userNetwork.remove(user);
+    userList.remove(user);
 }
 
 
-string UserNetwork:getUserList(){
+string UserNetwork::getUserList(){
     string result = "test message";
     return result;
 }
 
 
-void User::User (string _name, string _username, string _password, string _phoneNumber){
+/*void User::User (string _name, string _username, string _password, string _phoneNumber){
     name = _name;
     username = _username;
     password = _password;
     phoneNumber = _phoneNumber;
 }
+
+*/
 
 User::User(){
     name = "";
@@ -46,20 +50,23 @@ User::User(){
 
 }
 
-~User::User(){
+/*~User::User(){
     name = "";
     username = "";
     password = "";
 
 }
 
-void User::editName(string name_){
+
+*/
+
+void User::editName(string _name){
     name = _name;
 
 }
 
-void User::editUserName(string username_){
-    username = username_;
+void User::editUserName(string _username){
+    username = _username;
 
 }
 
@@ -78,11 +85,12 @@ void User::removeWallPost(Wall _wallPost){
 
 }
 
+/*
 string displayInfo(User user){
     cout << "UserName:" << username << "\n" << "Name:" << name << "\n" << "Password:" << password << "\n" << "Phone Number:" << phoneNumber;
 
 }
-
+*/
 
 void UserNetwork::addUser(User user){
     userList.add(user);

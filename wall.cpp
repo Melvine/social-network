@@ -1,7 +1,7 @@
 #include "wall.h"
-#include "DLinkedList.h"
+#include "DlinkedList.h"
 #include <string>
-#include <time.h>  
+#include <time.h>
 
 using namespace std;
 
@@ -47,4 +47,4 @@ void WallPost::editMessage(string message){
 void WallPost::removeMessage(string message){
   return;
 }
-   
+

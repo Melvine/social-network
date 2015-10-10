@@ -1,17 +1,24 @@
+#ifndef USER_H
+#define USER_H
+#include <string>
+#include "wall.h"
+#include "DlinkedList.h"
+
+using namespace std;
+
 class User {
   public:
     User ();
     ~User ();
-    User (username, password);
+    //User (string, string);
 
-    void editUserName(username);
-    void editName(name);
-    void editPassword(password);
-    void removeWallPost(WallPost);
-    void editPhoneNumber(phonenumber);
+    void editUserName(string);
+    void editName(string);
+    void editPassword(string);
+  //  void removeWallPost(WallPost);
+    void editPhoneNumber(string);
     string displayInfo();
 
-    importUser();
 
   private:
     Wall userWall;
@@ -23,7 +30,7 @@ class User {
 
 class UserNetwork {
     public:
-        userNetwork();
+        UserNetwork(User);
         ~UserNetwork();
 
         void validateUser();
@@ -34,3 +41,6 @@ class UserNetwork {
     private:
         DoublyLinkedList <UserNetwork> userList;
 };
+
+
+#endif
