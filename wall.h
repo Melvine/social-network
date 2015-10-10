@@ -9,7 +9,7 @@ class WallPost {
     public:
         WallPost();
         WallPost(string);
-        WallPost(WallPost, string);
+        WallPost(string, string);
         ~WallPost();
         
         void validateMessage();

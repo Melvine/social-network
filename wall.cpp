@@ -29,18 +29,22 @@ WallPost::WallPost(){
   timestamp = time(NULL);
 }
 
-WallPost::WallPost(message){
-  this.message = message;
+WallPost::WallPost(string message){
+  message = message;
   author = "";
   timestamp = time(NULL);
 }
 
-WallPost::WallPost(message, name){
-  this.message = message;
+WallPost::WallPost(string message, string name){
+  message = message;
   author = name;
   timestamp = time(NULL);
 }
 //void WallPost::validateMessage(){}
-void WallPost::editMessage(message){}
-void WallPost::removeMessage(message){}
+void WallPost::editMessage(string message){
+  return;
+}
+void WallPost::removeMessage(string message){
+  return;
+}
    
