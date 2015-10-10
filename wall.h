@@ -1,6 +1,7 @@
 #ifndef WALL_H
 #define WALL_H
 #include <string>
+#include "DlinkedList.h"
 
 using namespace std;
 
@@ -8,6 +9,7 @@ class WallPost {
     public:
         WallPost();
         WallPost(string);
+        WallPost(WallPost, string);
         ~WallPost();
         
         void validateMessage();
@@ -18,7 +20,7 @@ class WallPost {
         
     private:
         string message;
-        time_t timer;
+        time_t timestamp;
         string author;      
 };  
 
@@ -30,7 +32,7 @@ class Wall {
       void remove(WallPost); 
       string getWallList();    
     private:
-      DoublyLinkedList <WallPost> wallList;
+      DoublyLinkedList<WallPost> wallList;
 };
 
 #endif

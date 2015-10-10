@@ -10,7 +10,6 @@ Wall::Wall(WallPost wallpost){
 }
 Wall::~Wall(){
   wallList.~DoublyLinkedList();
-  delete wallList;
 }
 void Wall::add(WallPost wallpost){
   wallList.add(wallpost);
@@ -19,23 +18,28 @@ void Wall::remove(WallPost wallpost){
   wallList.remove(wallpost);
 }
 string Wall::getWallList(){
-  string result = message; //test using message variable
+  string result = "message"; //test using message variable
   //incomplete
-  return result
+  return result;
 }
 
 WallPost::WallPost(){
   message = "";
   author = "";
-  timer = time{NULL};
+  timestamp = time(NULL);
 }
 
 WallPost::WallPost(message){
   this.message = message;
   author = "";
-  timer = time{NULL};
+  timestamp = time(NULL);
 }
 
+WallPost::WallPost(message, name){
+  this.message = message;
+  author = name;
+  timestamp = time(NULL);
+}
 //void WallPost::validateMessage(){}
 void WallPost::editMessage(message){}
 void WallPost::removeMessage(message){}
