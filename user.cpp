@@ -2,23 +2,59 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
 
-void User::User (string name_, string username_, string password_, string phoneNumber_){
-    name = name_;
-    username = username_;
-    password = password_;
-    phoneNumber = phoneNumber_;
+
+UserNetwork::UserNetwork(User user){
+    DoublyLinkedList<User> userNetwork (user);
+
 }
 
-void User::User(){
-    name = NULL;
-    username = NULL;
-    password = NULL;
+UserNetwork:~UserNetwork(){
+    userNetwork.~DoublyLinkedList();
+}
+
+
+void UserNetwork::add(User user){
+    userNetwork.add(user);
+
+}
+
+
+void UserNetwork::remove(User user){
+    userNetwork.remove(user);
+}
+
+
+string UserNetwork:getUserList(){
+    string result = "test message";
+    return result;
+}
+
+
+void User::User (string _name, string _username, string _password, string _phoneNumber){
+    name = _name;
+    username = _username;
+    password = _password;
+    phoneNumber = _phoneNumber;
+}
+
+User::User(){
+    name = "";
+    username = "";
+    password = "";
+
+}
+
+~User::User(){
+    name = "";
+    username = "";
+    password = "";
 
 }
 
 void User::editName(string name_){
-    name = name_;
+    name = _name;
 
 }
 
@@ -27,19 +63,19 @@ void User::editUserName(string username_){
 
 }
 
-void User::editPassword(string password_){
-    password = password_;
+void User::editPassword(string _password){
+    password = _password;
 
 }
 
-void User::editPhoneNumber(string phoneNumber_){
-    phoneNumber = phoneNumber_;
+void User::editPhoneNumber(string _phoneNumber){
+    phoneNumber = _phoneNumber;
 
 }
 
-void User::removeWallPost(Wall wallPost_){
-    delete wallPost_;
-    
+void User::removeWallPost(Wall _wallPost){
+    delete _wallPost;
+
 }
 
 string displayInfo(User user){

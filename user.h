@@ -29,7 +29,7 @@ class UserNetwork {
         void validateUser();
         void addUser(User);
         void removeUser(User);
-        getUserList();
+        string getUserList();
 
     private:
         DoublyLinkedList <UserNetwork> userList;
