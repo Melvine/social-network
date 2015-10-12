@@ -10,10 +10,7 @@ class WallPost {
         WallPost();
         WallPost(string);
         WallPost(string, string);
-        ~WallPost();
         
-        void validateMessage();
-        void makeMessage(string);
         void editMessage(string);
         void removeMessage(string);
         

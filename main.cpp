@@ -1,12 +1,13 @@
 #include <iostream>
 #include "DlinkedList.h"
+#include "DlinkedList.cpp"
 #include "wall.h"
 #include "user.h"
 #include <string>
 
-using namespace std
+using namespace std;
 
 int main(){
-	Wall test("hi this is a string");
-	cout << test.getWallList() << endl;
+	User user_one("Melvin", "melvine", "mypassword123");
+	cout << user_one.displayInfo() << endl;
 }

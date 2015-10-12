@@ -1,5 +1,6 @@
 #include "user.h"
 #include "DlinkedList.h"
+#include "DlinkedList.cpp"
 #include "wall.h"
 #include <iostream>
 #include <string>
@@ -24,7 +25,7 @@ void UserNetwork::add(User user){
 
 
 void UserNetwork::remove(User user){
-    userList.remove(user);
+    //userList.remove(user);
 }
 
 
@@ -47,18 +48,14 @@ User::User(){
     name = "";
     username = "";
     password = "";
-
+    phoneNumber = "";
 }
-
-/*~User::User(){
-    name = "";
-    username = "";
-    password = "";
-
+User::User(string _username,string _name,string _password){
+    name = _name;
+    username = _username;
+    password = _password;
+    phoneNumber = "";
 }
-
-
-*/
 
 void User::editName(string _name){
     name = _name;
@@ -85,10 +82,8 @@ void User::editPhoneNumber(string _phoneNumber){
 
 // }
 
-/*
-string displayInfo(User user){
-    cout << "UserName:" << username << "\n" << "Name:" << name << "\n" << "Password:" << password << "\n" << "Phone Number:" << phoneNumber;
-
+string User::displayInfo(){
+    return username;
 }
-*/
+
 

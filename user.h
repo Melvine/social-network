@@ -9,8 +9,7 @@ using namespace std;
 class User {
   public:
     User ();
-    ~User ();
-    //User (string, string);
+    User (string, string, string);
 
     void editUserName(string);
     void editName(string);
@@ -32,13 +31,13 @@ class UserNetwork {
         UserNetwork(User);
         ~UserNetwork();
 
-        void validateUser();
+       // void validateUser();
         void add(User);
         void remove(User);
         string getUserList();
 
     private:
-        DoublyLinkedList <UserNetwork> userList;
+        DoublyLinkedList<User> userList;
 };
 
 

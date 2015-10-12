@@ -7,11 +7,11 @@ class Node{
     Node();
     Node(D);
     ~Node();
-   
-  private:
-    D data;
     Node *previous;
     Node *next;
+
+  private:
+    D data;
 };
 
 template <class D>

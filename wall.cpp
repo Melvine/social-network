@@ -1,5 +1,6 @@
 #include "wall.h"
 #include "DlinkedList.h"
+#include "DlinkedList.cpp"
 #include <string>
 #include <time.h>
 
@@ -15,13 +16,14 @@ void Wall::add(WallPost wallpost){
   wallList.add(wallpost);
 }
 void Wall::remove(WallPost wallpost){
-  wallList.remove(wallpost);
+  //wallList.remove(wallpost);
 }
 string Wall::getWallList(){
   string result = "message"; //test using message variable
   //incomplete
   return result;
 }
+
 
 WallPost::WallPost(){
   message = "";
