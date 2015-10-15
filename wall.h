@@ -18,7 +18,7 @@ class WallPost {
     private:
         string message;
         time_t timestamp;
-        string author;      
+        string username;      
 };  
 
 class Wall {

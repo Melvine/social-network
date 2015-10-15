@@ -24,22 +24,21 @@ string Wall::getWallList(){
   return result;
 }
 
-
 WallPost::WallPost(){
   message = "";
-  author = "";
+  username = "";
   timestamp = time(NULL);
 }
 
 WallPost::WallPost(string message){
   message = message;
-  author = "";
+  username = "";
   timestamp = time(NULL);
 }
 
 WallPost::WallPost(string message, string name){
   message = message;
-  author = name;
+  username = name;
   timestamp = time(NULL);
 }
 //void WallPost::validateMessage(){}

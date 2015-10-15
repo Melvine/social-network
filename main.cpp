@@ -8,6 +8,6 @@
 using namespace std;
 
 int main(){
-	User user_one("Melvin", "melvine", "mypassword123");
+	User user_one("Melvine", "Melvin", "mypassword123");
 	cout << user_one.displayInfo() << endl;
 }

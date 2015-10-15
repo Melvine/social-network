@@ -11,6 +11,7 @@ template <class D> DoublyLinkedList<D>::DoublyLinkedList(D data){
 	root = &p;
 }
 template <class D> DoublyLinkedList<D>::~DoublyLinkedList(){
+	// //in development 
 	// if(root == NULL){
 	// 	return;
 	// }
@@ -45,21 +46,23 @@ template <class D> int DoublyLinkedList<D>::add(D data){
 	}
 }
 template <class D> int DoublyLinkedList<D>::remove(D data){
-	// if(root == NULL){
-	// 	return 1;
-	// }
-	// else{
-	// 	Node<D> *tmp = root;
-	// 	while(tmp != NULL){
-	// 		if(tmp->data == data){
-	// 			(tmp->previous)->next = tmp->next;
-	// 			delete tmp;
-	// 			return 0;
-	// 		}
-	// 		tmp = tmp->next;
-	// 	}
-	// 	return 1;
-	// }
+	//development
+	if(root == NULL){
+		return 1;
+	}
+	else{
+		Node<D> *tmp = root;
+		while(tmp != NULL){	
+			if(tmp->data.username.compare(data.username) == 1){					 
+				(tmp->previous)->next = tmp->next;
+				(tmp->next)->previous = tmp->previous;
+				delete tmp;
+				return 0;
+			}
+			tmp = tmp->next;
+		}
+		return 1;
+	}
 }
 template <class D> Node<D>::Node(){
 	data = NULL;
