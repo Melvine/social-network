@@ -17,7 +17,8 @@ class User {
   //  void removeWallPost(WallPost);
     void editPhoneNumber(string);
     string displayInfo();
-
+    string getUsername();
+    string getName();
 
   private:
     string username;
@@ -28,6 +29,7 @@ class User {
 
 class UserNetwork {
     public:
+        UserNetwork();
         UserNetwork(User);
         ~UserNetwork();
 
@@ -36,7 +38,7 @@ class UserNetwork {
         void remove(User);
         string getUserList();
 
-    private:
+    //private:
         DoublyLinkedList<User> userList;
 };
 

@@ -16,7 +16,7 @@ void Wall::add(WallPost wallpost){
   wallList.add(wallpost);
 }
 void Wall::remove(WallPost wallpost){
-  //wallList.remove(wallpost);
+  wallList.remove(wallpost);
 }
 string Wall::getWallList(){
   string result = "message"; //test using message variable
@@ -47,5 +47,8 @@ void WallPost::editMessage(string message){
 }
 void WallPost::removeMessage(string message){
   return;
+}
+string WallPost::getUsername(){
+  return username;
 }
 

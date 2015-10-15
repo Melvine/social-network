@@ -13,6 +13,7 @@ class WallPost {
         
         void editMessage(string);
         void removeMessage(string);
+		string getUsername();
         
         
     private:

@@ -9,8 +9,6 @@ class Node{
     ~Node();
     Node *previous;
     Node *next;
-
-  private:
     D data;
 };
 
@@ -23,7 +21,8 @@ class DoublyLinkedList {
 
     int add(D);
     int remove(D);
-   
+
+    Node<D>* getRoot();
   private:
 	Node<D> *root;
 };

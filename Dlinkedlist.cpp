@@ -1,14 +1,16 @@
 #include "DlinkedList.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
 template <class D> DoublyLinkedList<D>::DoublyLinkedList(){
 	root = NULL;
 }
-template <class D> DoublyLinkedList<D>::DoublyLinkedList(D data){
-	Node<D> p(data);
-	root = &p;
+template <class D> DoublyLinkedList<D>::DoublyLinkedList(D _data){
+	//in development
+	root =  new Node<D>();
+	root->data = _data;
 }
 template <class D> DoublyLinkedList<D>::~DoublyLinkedList(){
 	// //in development 
@@ -31,9 +33,9 @@ template <class D> DoublyLinkedList<D>::~DoublyLinkedList(){
 	// }
 }
 template <class D> int DoublyLinkedList<D>::add(D data){
-	Node<D> p(data);
+	Node<D> *p = new Node<D>(data);
 	if(root == NULL){
-		root = &p;
+		root = p;
 		return 0;
 	}
 	else{
@@ -41,7 +43,7 @@ template <class D> int DoublyLinkedList<D>::add(D data){
 		while(tmp != NULL){
 			tmp = tmp->next;
 		}
-		tmp->next = &p;
+		tmp->next = p;
 		return 0;
 	}
 }
@@ -53,7 +55,7 @@ template <class D> int DoublyLinkedList<D>::remove(D data){
 	else{
 		Node<D> *tmp = root;
 		while(tmp != NULL){	
-			if(tmp->data.username.compare(data.username) == 1){					 
+			if(tmp->data.getUsername().compare(data.getUsername()) == 1){					 
 				(tmp->previous)->next = tmp->next;
 				(tmp->next)->previous = tmp->previous;
 				delete tmp;
@@ -65,12 +67,12 @@ template <class D> int DoublyLinkedList<D>::remove(D data){
 	}
 }
 template <class D> Node<D>::Node(){
-	data = NULL;
+	//data = NULL;
   previous = NULL;
   next = NULL;
 }
-template <class D> Node<D>::Node(D data){
-	data = data;
+template <class D> Node<D>::Node(D _data){
+	data = _data;
   previous = NULL;
   next = NULL;
 }
@@ -78,4 +80,10 @@ template <class D> Node<D>::~Node(){
 	delete &data;
   delete previous;
   delete next;
+}
+
+
+
+template <class D> Node<D>* DoublyLinkedList<D>::getRoot(){
+	return root;
 }

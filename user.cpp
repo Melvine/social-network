@@ -6,10 +6,13 @@
 #include <string>
 
 using namespace std;
+UserNetwork::UserNetwork(){
+    DoublyLinkedList<User> userList;
 
+}
 
 UserNetwork::UserNetwork(User user){
-    DoublyLinkedList<User> userList (user);
+    DoublyLinkedList<User> userList(user);
 
 }
 
@@ -19,18 +22,28 @@ UserNetwork::~UserNetwork(){
 
 
 void UserNetwork::add(User user){
+    cout << user.getUsername() << "this is in add";
     userList.add(user);
-
 }
 
 
 void UserNetwork::remove(User user){
-    //userList.remove(user);
+    userList.remove(user);
 }
 
 
 string UserNetwork::getUserList(){
-    string result = "test message";
+    string result = "";
+    Node<User> *temp = userList.getRoot();
+
+    if(temp == NULL){
+      return "no root";
+    }
+    while (temp != NULL){
+      result = result + (temp->data.getUsername()) + "\n" ;
+      temp = temp->next;
+    }
+    
     return result;
 }
 
@@ -81,7 +94,12 @@ void User::editPhoneNumber(string _phoneNumber){
 //     delete _wallPost;
 
 // }
-
+string User::getUsername(){
+  return username;
+}
+string User::getName(){
+  return name;
+}
 string User::displayInfo(){
     return username;
 }
