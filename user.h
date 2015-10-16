@@ -3,6 +3,7 @@
 #include <string>
 #include "wall.h"
 #include "DlinkedList.h"
+#include <fstream>
 
 using namespace std;
 
@@ -10,6 +11,8 @@ class User {
   public:
     User ();
     User (string, string, string);
+    User (string, string);
+    User (string, string, string, string);
 
     void editUserName(string);
     void editName(string);
@@ -25,14 +28,15 @@ class User {
     string getPhoneNumber();
     int getId();
 
-    void createWall(WallPost);
     void createWallPost(string);
+
 
   private:
     string username;
     string name;
     string password;
     string phoneNumber;
+    DoublyLinkedList<WallPost> wall;
     int id;
 };
 
@@ -45,7 +49,9 @@ class UserNetwork {
         // void validateUser();
         void add(User);
         void remove(int);
-        void writeNetwork(char*);
+        void writeNetwork(string);
+        void readNetwork(string);
+        User login(string, string);
 
         string getUserList();
 

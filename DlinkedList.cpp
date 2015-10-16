@@ -12,7 +12,7 @@ template <class D> DoublyLinkedList<D>::DoublyLinkedList(D _data){
 	add(_data);
 }
 template <class D> DoublyLinkedList<D>::~DoublyLinkedList(){
-	// //in development 
+	// //in development
 	// if(root == NULL){
 	// 	return;
 	// }
@@ -41,7 +41,7 @@ template <class D> int DoublyLinkedList<D>::add(D data){
 	else{
 		int count = 1;
 		Node<D> *tmp = root;
-		while(tmp != NULL){
+		while(tmp->next != NULL){
 			tmp = tmp->next;
 			count++;
 		}
@@ -57,8 +57,8 @@ template <class D> int DoublyLinkedList<D>::remove(int _id){
 	}
 	else{
 		Node<D> *tmp = root;
-		while(tmp != NULL){	
-			if(tmp->data.getId() == _id){					 
+		while(tmp != NULL){
+			if(tmp->data.getId() == _id){
 				(tmp->previous)->next = tmp->next;
 				(tmp->next)->previous = tmp->previous;
 				delete tmp;
