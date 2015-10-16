@@ -176,7 +176,7 @@ void UserNetwork::readNetwork(char* file){
             phoneNumber = s;
         //cout << s << endl;
         count++;
-        if (count = 3){
+        if (count == 3){
             count = 0;
             User new_user (username, password, name, phoneNumber);
             add(new_user);
