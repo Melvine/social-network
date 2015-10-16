@@ -16,15 +16,18 @@ class User {
     void editPassword(string);
   //  void removeWallPost(WallPost);
     void editPhoneNumber(string);
+    void setId(int);
     string displayInfo();
     string getUsername();
     string getName();
+    int getId();
 
   private:
     string username;
     string name;
     string password;
     string phoneNumber;
+    int id; 
 };
 
 class UserNetwork {
@@ -33,12 +36,12 @@ class UserNetwork {
         UserNetwork(User);
         ~UserNetwork();
 
-       // void validateUser();
+        // void validateUser();
         void add(User);
-        void remove(User);
+        void remove(int);
         string getUserList();
 
-    //private:
+    private:
         DoublyLinkedList<User> userList;
 };
 

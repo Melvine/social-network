@@ -9,11 +9,10 @@ using namespace std;
 
 int main(){
 	User user_one("Melvine", "Melvin", "mypassword123");
-	WallPost wall_post("message");
+	WallPost wall_post("I like pizza");
 	//cout << user_one.displayInfo() << endl;
 	UserNetwork facebook;
 	facebook.add(user_one);
-	//cout << facebook.userList.data.getUsername();
 	//Wall waller(wall_post);
 	cout << "\n" << facebook.getUserList() << endl;
 }

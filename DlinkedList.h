@@ -20,7 +20,7 @@ class DoublyLinkedList {
     ~DoublyLinkedList();
 
     int add(D);
-    int remove(D);
+    int remove(int);
 
     Node<D>* getRoot();
   private:

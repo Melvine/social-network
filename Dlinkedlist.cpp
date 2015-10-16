@@ -9,8 +9,7 @@ template <class D> DoublyLinkedList<D>::DoublyLinkedList(){
 }
 template <class D> DoublyLinkedList<D>::DoublyLinkedList(D _data){
 	//in development
-	root =  new Node<D>();
-	root->data = _data;
+	add(_data);
 }
 template <class D> DoublyLinkedList<D>::~DoublyLinkedList(){
 	// //in development 
@@ -36,18 +35,22 @@ template <class D> int DoublyLinkedList<D>::add(D data){
 	Node<D> *p = new Node<D>(data);
 	if(root == NULL){
 		root = p;
+		root->data.setId(0);
 		return 0;
 	}
 	else{
+		int count = 1;
 		Node<D> *tmp = root;
 		while(tmp != NULL){
 			tmp = tmp->next;
+			count++;
 		}
 		tmp->next = p;
+		tmp->next->data.setId(count);
 		return 0;
 	}
 }
-template <class D> int DoublyLinkedList<D>::remove(D data){
+template <class D> int DoublyLinkedList<D>::remove(int _id){
 	//development
 	if(root == NULL){
 		return 1;
@@ -55,7 +58,7 @@ template <class D> int DoublyLinkedList<D>::remove(D data){
 	else{
 		Node<D> *tmp = root;
 		while(tmp != NULL){	
-			if(tmp->data.getUsername().compare(data.getUsername()) == 1){					 
+			if(tmp->data.getId() == _id){					 
 				(tmp->previous)->next = tmp->next;
 				(tmp->next)->previous = tmp->previous;
 				delete tmp;
@@ -81,8 +84,6 @@ template <class D> Node<D>::~Node(){
   delete previous;
   delete next;
 }
-
-
 
 template <class D> Node<D>* DoublyLinkedList<D>::getRoot(){
 	return root;

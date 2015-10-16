@@ -27,8 +27,8 @@ void UserNetwork::add(User user){
 }
 
 
-void UserNetwork::remove(User user){
-    userList.remove(user);
+void UserNetwork::remove(int _id){
+    userList.remove(_id);
 }
 
 
@@ -89,7 +89,9 @@ void User::editPhoneNumber(string _phoneNumber){
     phoneNumber = _phoneNumber;
 
 }
-
+void User::setId(int _id){
+  id = _id;
+}
 // void User::removeWallPost(Wall _wallPost){
 //     delete _wallPost;
 
@@ -103,5 +105,7 @@ string User::getName(){
 string User::displayInfo(){
     return username;
 }
-
+int User::getId(){
+    return id;
+}
 

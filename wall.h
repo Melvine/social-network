@@ -12,23 +12,29 @@ class WallPost {
         WallPost(string, string);
         
         void editMessage(string);
-        void removeMessage(string);
+        void setId(int);
 		string getUsername();
-        
-        
+        string getMessage();
+        string getWallPost();
+        int getId();
     private:
         string message;
         time_t timestamp;
-        string username;      
+        string username;  
+        int id;    
 };  
 
 class Wall {
     public:
+      Wall();
       Wall(WallPost);
       ~Wall();
+
       void add(WallPost);
-      void remove(WallPost); 
+      void remove(int); 
+
       string getWallList();    
+
     private:
       DoublyLinkedList<WallPost> wallList;
 };
