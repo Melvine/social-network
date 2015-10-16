@@ -41,12 +41,12 @@ template <class D> int DoublyLinkedList<D>::add(D data){
 	else{
 		int count = 1;
 		Node<D> *tmp = root;
-		while(tmp != NULL){
+		while(tmp->next != NULL){
 			tmp = tmp->next;
 			count++;
 		}
-		tmp = p;
-		tmp->data.setId(count);
+		tmp->next = p;
+		tmp->next->data.setId(count);
 		return 0;
 	}
 }

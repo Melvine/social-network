@@ -156,35 +156,45 @@ void UserNetwork::writeNetwork(char* file){
 }
 
 
-void UserNetwork::readNetwork(char* file){
+void UserNetwork::readNetwork(string file){
     ifstream myfile(file);
-    string read, inData, s;
+    string read, inData, line, s;
     string username, name, password, phoneNumber;
 
     int count = 0;
-    while (getline(myfile, s, '|' ).good()){
+    while (getline(myfile, line).good()){
+      stringstream iss;
+      iss << line;
+
+      while ( getline(iss, s, '|') ){
         switch (count){
-        case 0:
-            username = s;
-        case 1:
-            password = s;
+          case 0:
+              username = s;
+              break;
+          case 1:
+              password = s;
+              break;
+          case 2:
+              name = s;
+              break;
+          case 3:
+              phoneNumber = s;
+              break;
+        }
 
-        case 2:
-            name = s;
-
-        case 3:
-            phoneNumber = s;
-        //cout << s << endl;
+        cout << s << endl;
         count++;
+<<<<<<< HEAD
         if (count == 3){
+=======
+        if (count > 3){
+>>>>>>> 8ae8be3246460766e3a26a31a3039b8773f784f8
             count = 0;
+           
             User new_user (username, password, name, phoneNumber);
             add(new_user);
-            cout<< new_user.getUsername() << endl;
         }
-
-        }
-
+      }
     }
 
 }
@@ -205,7 +215,6 @@ User UserNetwork::login(string _username, string _password){
         }
     }
     cout << "User does not exist or you have entered your username/password incorrectly";
-
 
 }
 /*
