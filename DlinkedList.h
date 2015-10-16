@@ -6,7 +6,6 @@ class Node{
   public:
     Node();
     Node(D);
-    ~Node();
     Node *previous;
     Node *next;
     D data;

@@ -12,7 +12,6 @@ template <class D> DoublyLinkedList<D>::DoublyLinkedList(D _data){
 	add(_data);
 }
 template <class D> DoublyLinkedList<D>::~DoublyLinkedList(){
-	// //in development
 	// if(root == NULL){
 	// 	return;
 	// }
@@ -25,9 +24,8 @@ template <class D> DoublyLinkedList<D>::~DoublyLinkedList(){
 	// 	//deletes every Node starting from the back
 	// 	while(tmp != NULL){
 	// 		Node<D> *unwanted = tmp;
-	// 		unwanted.~Node();
-	// 		tmp = tmp->previous;
 	// 		delete unwanted;
+	// 		tmp = tmp->previous;
 	// 	}
 	// }
 }
@@ -70,19 +68,14 @@ template <class D> int DoublyLinkedList<D>::remove(int _id){
 	}
 }
 template <class D> Node<D>::Node(){
-	//data = NULL;
+  //data = NULL;
   previous = NULL;
   next = NULL;
 }
 template <class D> Node<D>::Node(D _data){
-	data = _data;
+  data = _data;
   previous = NULL;
   next = NULL;
-}
-template <class D> Node<D>::~Node(){
-	delete &data;
-  delete previous;
-  delete next;
 }
 
 template <class D> Node<D>* DoublyLinkedList<D>::getRoot(){
