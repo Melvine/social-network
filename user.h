@@ -19,12 +19,17 @@ class User {
     string displayInfo();
     string getUsername();
     string getName();
+    string getPassword();
+    string getPhoneNumber();
+    void createWall(WallPost);
+    void createWallPost(string);
 
   private:
     string username;
     string name;
     string password;
     string phoneNumber;
+    int id;
 };
 
 class UserNetwork {
@@ -37,8 +42,9 @@ class UserNetwork {
         void add(User);
         void remove(User);
         string getUserList();
+        void writeNetwork(char*);
 
-    //private:
+    private:
         DoublyLinkedList<User> userList;
 };
 
