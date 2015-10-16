@@ -22,11 +22,15 @@ int main(){
 	*
 	*
 	*/
+
+
+
 	UserNetwork facebook;
 	facebook.readNetwork("infile.txt");
 	int main_menu_option = 0;
 	string name, username, password, phonenumber;
 	User *current_user = NULL;
+
 
 	//main menu of the social app
 	cout << "Welcome the social network" << endl;
@@ -56,7 +60,7 @@ int main(){
 		cin >> name;
 		cout << "Enter a username" << endl;
 		cin >> username;
-		cout << "Enter a password" << endl;	
+		cout << "Enter a password" << endl;
 		cin >> password;
 		cout << "Enter your phone number" << endl;
 		cin >> phonenumber;
@@ -68,7 +72,7 @@ int main(){
 		main_menu_option = 0;
 	}
 	else if(main_menu_option == 3){
-		exit(EXIT_SUCCESS);
+		return 0;
 		//quit
 	}
 
@@ -86,14 +90,14 @@ int main(){
 				main_menu_option = 0;
 			}
 			else{
-				main_menu_option = 0;	
+				main_menu_option = 0;
 			}
 		}
 		if(main_menu_option == 1){
 			cout << current_user->getWall() << endl; // not implemented
 		}
 		else if(main_menu_option == 2){
-			exit(EXIT_SUCCESS);
+			return 0;
 		}
 	}
 

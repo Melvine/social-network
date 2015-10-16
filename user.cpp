@@ -37,6 +37,7 @@ void UserNetwork::remove(int _id){
 }
 
 
+
 string UserNetwork::getUserList(){
     string result = "";
     Node<User> *temp = userList.getRoot();
@@ -160,13 +161,9 @@ void UserNetwork::writeNetwork(char* file){
 }
 
 
-<<<<<<< HEAD
-void UserNetwork::readNetwork(char* file){
-    ifstream myfile(file);
-=======
+
 void UserNetwork::readNetwork(char* user_file){
     ifstream myfile(user_file);
->>>>>>> c4766492f6b76b17219e40f31d212d0756438935
     string read, inData, line, s;
     string username, name, password, phoneNumber;
 
@@ -193,12 +190,10 @@ void UserNetwork::readNetwork(char* user_file){
 
         cout << s << endl;
         count++;
-<<<<<<< HEAD
-        if (count > 3){
-=======
+
 
         if (count > 3){
->>>>>>> c4766492f6b76b17219e40f31d212d0756438935
+
             count = 0;
             User new_user (username, password, name, phoneNumber);
             add(new_user);
@@ -225,6 +220,21 @@ User* UserNetwork::login(string _username, string _password){
     }
     cout << "User does not exist or you have entered your username/password incorrectly";
 }
+
+int UserNetwork::validateUser(string _username){
+    Node <User> *temp = userList.getRoot();
+    while (temp != NULL){
+        if ((temp->data.getUsername() == _username )){
+            return 0;
+        }
+        else {
+            temp = temp -> next;
+        }
+
+    }
+    return 1;
+}
+
 
 /*
 void UserNetwork::readNetwork(char *file){
