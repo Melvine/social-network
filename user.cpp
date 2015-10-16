@@ -187,6 +187,7 @@ void UserNetwork::readNetwork(char* user_file){
 
         cout << s << endl;
         count++;
+
         if (count > 3){
             count = 0;
            
