@@ -49,8 +49,8 @@ class UserNetwork {
         // void validateUser();
         void add(User);
         void remove(int);
-        void writeNetwork(string);
-        void readNetwork(string);
+        void writeNetwork(char*);
+        void readNetwork(char*);
         User login(string, string);
 
         string getUserList();

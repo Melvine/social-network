@@ -136,6 +136,7 @@ string User::displayInfo(){
     return info;
 }
 
+// id
 void UserNetwork::writeNetwork(char* file){
 	ofstream myfile;
 	myfile.open(file);
@@ -156,7 +157,7 @@ void UserNetwork::writeNetwork(char* file){
 }
 
 
-void UserNetwork::readNetwork(string file){
+void UserNetwork::readNetwork(char* file){
     ifstream myfile(file);
     string read, inData, line, s;
     string username, name, password, phoneNumber;
@@ -184,13 +185,8 @@ void UserNetwork::readNetwork(string file){
 
         cout << s << endl;
         count++;
-<<<<<<< HEAD
-        if (count == 3){
-=======
         if (count > 3){
->>>>>>> 8ae8be3246460766e3a26a31a3039b8773f784f8
             count = 0;
-           
             User new_user (username, password, name, phoneNumber);
             add(new_user);
         }
