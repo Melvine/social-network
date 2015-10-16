@@ -43,19 +43,24 @@ string UserNetwork::getUserList(){
       result = result + (temp->data.getUsername()) + "\n" ;
       temp = temp->next;
     }
-    
+
     return result;
 }
 
 
-/*void User::User (string _name, string _username, string _password, string _phoneNumber){
+void User::User (string _name, string _username, string _password, string _phoneNumber){
     name = _name;
     username = _username;
     password = _password;
     phoneNumber = _phoneNumber;
 }
 
-*/
+User::User(string _username, string _password){
+    name = "";
+    username = _username;
+    password = _password;
+    phoneNumber = "";
+}
 
 User::User(){
     name = "";
@@ -89,23 +94,77 @@ void User::editPhoneNumber(string _phoneNumber){
     phoneNumber = _phoneNumber;
 
 }
+
 void User::setId(int _id){
   id = _id;
 }
+
+void User::createWallPost(string _post){
+    WallPost newPost = WallPost(_post, username);
+    wall.add(newPost);
+
+
+}
+
 // void User::removeWallPost(Wall _wallPost){
 //     delete _wallPost;
 
 // }
+
+void User::createWall(WallPost wallpost){
+    DoublyLinkedList <WallPost> wallpost;
+}
+
 string User::getUsername(){
   return username;
 }
+
 string User::getName(){
   return name;
 }
-string User::displayInfo(){
-    return username;
+
+string User::getPassword(){
+  return password;
 }
+
+string User::getPhoneNumber(){
+  return phoneNumber;
+}
+
+
+string User::displayInfo(){
+    string info = "Username: " + username +"\n" + "Name: " + name + "\n" + "Password: " + password + "\n" + "Phonenumber: "+ phoneNumber;
+    return info;
+}
+
+void UserNetwork::writeNetwork(char* file){
+	ofstream myfile;
+	myfile.open(filename);
+
+	Node<User> *temp = userNetwork->getRoot();
+	if(myfile.is_open()){
+		while(temp != NULL){
+			myfile << temp->getData().displayInfo();
+			cout << temp->getData().displayInfo();
+			temp = temp->getNext();
+		}
+
+		myfile.close();
+	}
+	else{
+		cout << "Unable to open the file" << endl;
+	}
+}
+
 int User::getId(){
     return id;
 }
 
+
+/*
+void UserNetwork::readNetwork(char *file){
+>>>>>>> b8947be49cb462fe0c968d67957c4ae4e08b2f38
+
+
+}
+*/
