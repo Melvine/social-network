@@ -130,6 +130,9 @@ string User::getPhoneNumber(){
   return phoneNumber;
 }
 
+string User::getWall(){
+  return wall.getWallList();
+}
 
 string User::displayInfo(){
     string info = "Username: " + username +"\n" + "Name: " + name + "\n" + "Password: " + password + "\n" + "Phonenumber: "+ phoneNumber;
@@ -156,8 +159,8 @@ void UserNetwork::writeNetwork(char* file){
 }
 
 
-void UserNetwork::readNetwork(string file){
-    ifstream myfile(file);
+void UserNetwork::readNetwork(char* user_file){
+    ifstream myfile(user_file);
     string read, inData, line, s;
     string username, name, password, phoneNumber;
 
@@ -200,19 +203,19 @@ int User::getId(){
     return id;
 }
 
-User UserNetwork::login(string _username, string _password){
+User* UserNetwork::login(string _username, string _password){
     Node <User> *temp = userList.getRoot();
     while (temp != NULL){
         if ((temp->data.getUsername() == _username ) && (temp->data.getPassword() == _password)){
-            return temp->data;
+            return &(temp->data);
         }
         else{
             temp = temp ->next;
         }
     }
     cout << "User does not exist or you have entered your username/password incorrectly";
-
 }
+
 /*
 void UserNetwork::readNetwork(char *file){
 >>>>>>> b8947be49cb462fe0c968d67957c4ae4e08b2f38

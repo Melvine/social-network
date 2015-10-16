@@ -5,6 +5,7 @@
 #include "DlinkedList.h"
 #include <fstream>
 
+
 using namespace std;
 
 class User {
@@ -26,6 +27,8 @@ class User {
     string getName();
     string getPassword();
     string getPhoneNumber();
+    string getWall();
+
     int getId();
 
     void createWallPost(string);
@@ -36,7 +39,7 @@ class User {
     string name;
     string password;
     string phoneNumber;
-    DoublyLinkedList<WallPost> wall;
+    Wall wall;
     int id;
 };
 
@@ -49,9 +52,9 @@ class UserNetwork {
         // void validateUser();
         void add(User);
         void remove(int);
-        void writeNetwork(string);
-        void readNetwork(string);
-        User login(string, string);
+        void writeNetwork(char *);
+        void readNetwork(char*);
+        User* login(string, string);
 
         string getUserList();
 
