@@ -22,11 +22,15 @@ int main(){
 	*
 	*
 	*/
+
+
+
 	UserNetwork facebook;
 	facebook.readNetwork("infile.txt");
 	int main_menu_option = 0;
-	string name, username, password, phonenumber;
+	string name, username, password, phonenumber, post;
 	User *current_user = NULL;
+
 
 	//main menu of the social app
 	cout << "Welcome the social network" << endl;
@@ -56,27 +60,28 @@ int main(){
 		}
 		else if(main_menu_option == 2){
 				//register
-				cout << "Enter your name" << endl;
-				cin >> name;
-				cout << "Enter a username" << endl;
+				cout << "Enter your username" << endl;
 				cin >> username;
-				cout << "Enter a password" << endl;	
+				cout << "Enter a password" << endl;
 				cin >> password;
+				cout << "Enter a name" << endl;	
+				cin >> name;
 				cout << "Enter your phone number" << endl;
 				cin >> phonenumber;
-				//if(facebook.validate() == 1){
+				if(facebook.validateUser(username) == 1){
+					User new_user(username, password, name, phonenumber);
+					facebook.add(new_user);
+					current_user = &new_user;				
 					cout << "You have successfully created a user" << endl;	
-				// }else{
-				// 	cout << "Duplicate username, failed to sign up" << endl;
-				// }
-				
-				User new_user(username, password, name, phonenumber);
-				facebook.add(new_user);
-				current_user = &new_user;
-				cout << "Logging into the new user account" << endl;
+					cout << "Logging into the new user account" << endl << endl;					
+				}else{
+					cout << "Duplicate username, failed to sign up" << endl << endl;
+					main_menu_option = 0;
+				}
 			}
 			else if(main_menu_option == 3){
-				exit(EXIT_SUCCESS);
+				//exit(EXIT_SUCCESS);
+				return 1;
 				//quit
 			}
 	}
@@ -87,29 +92,40 @@ int main(){
 	//for logged in users
 	if(current_user != NULL){
 		cout << "You have logged in, " << current_user->getName() << endl;
+
 		while(main_menu_option == 0){
 			cout << "Chose an option" << endl;
 			cout << "1. Display my wall" << endl;
-			cout << "2. Quit" << endl;
+			cout << "2. Add post" << endl;
+			cout << "3. Quit" << endl;
 			cin >> main_menu_option;
+
 			if(!main_menu_option){
 				cin.clear();
 				cin.ignore();
 			}
-			if(main_menu_option == 0 || main_menu_option > 2 || main_menu_option < 0){
-			cout << "please choose the following options" << endl;
+
+			if(main_menu_option == 0 || main_menu_option > 3 || main_menu_option < 0){
+			cout << "please choose the following options" << endl << endl;
 				main_menu_option = 0;
-			}
-			else{
-				main_menu_option = 0;	
 			}
 
 			if(main_menu_option == 1){
-				cout << current_user->getWall() << endl;
+				cout << current_user->getWall() << endl << endl;
 				main_menu_option = 0;
 			}
 			else if(main_menu_option == 2){
-				exit(EXIT_SUCCESS);
+				cout << "write your post (press enter to submit): " << endl;
+				getline(cin, post);
+
+				cout << "preview" << post << endl;
+				current_user->createWallPost(post);
+
+				cout << "post added successfully" << endl;
+				main_menu_option = 0;
+			}
+			else if(main_menu_option == 3){
+				return 1;
 			}
 		}
 	}

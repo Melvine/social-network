@@ -29,6 +29,7 @@ class User {
     string getPhoneNumber();
     string getWall();
 
+
     int getId();
 
     void createWallPost(string);
@@ -52,9 +53,11 @@ class UserNetwork {
         // void validateUser();
         void add(User);
         void remove(int);
+
         void writeNetwork(char *);
         void readNetwork(char*);
         User* login(string, string);
+        int validateUser(string);
 
         string getUserList();
 
