@@ -42,6 +42,7 @@ int main(){
 		cout << "2. Register Account" << endl;
 		cout << "3. Quit" << endl;
 		cin >> main_menu_option;
+		cin.ignore(1,'\n');
 		if(!main_menu_option){
 			cin.clear();
 			cin.ignore();
@@ -53,9 +54,9 @@ int main(){
 		if(main_menu_option == 1){
 			//login
 			cout << "Enter your username" << endl;
-			cin >> username;
+			getline(cin, username);
 			cout << "Enter your password" << endl;
-			cin >> password;
+			getline(cin, password);
 			current_user = (facebook.login(username, password));
 			if(current_user == NULL){
 				main_menu_option = 0;
@@ -63,14 +64,14 @@ int main(){
 		}
 		else if(main_menu_option == 2){
 				//register
-				cout << "Enter your username" << endl;
-				cin >> username;
-				cout << "Enter a password" << endl;
-				cin >> password;
-				cout << "Enter a name" << endl;	
-				cin >> name;
-				cout << "Enter your phone number" << endl;
-				cin >> phonenumber;
+				cout << "Enter your username: ";
+				getline(cin, username);
+				cout << "Enter a password: ";
+				getline(cin, password);
+				cout << "Enter a name: ";	
+				getline(cin, name);
+				cout << "Enter your phone number: ";
+				getline(cin, phonenumber);
 				if(facebook.validateUser(username) == 1){
 					User new_user(username, password, name, phonenumber);
 					facebook.add(new_user);
@@ -114,6 +115,7 @@ int main(){
 			}
 
 			if(main_menu_option == 1){
+				cout << endl << "Your wall: " << endl;	
 				cout << current_user->getWall() << endl;
 				main_menu_option = 0;
 			}
@@ -122,7 +124,6 @@ int main(){
 				cin.ignore(); 
 				getline(cin, post);
 
-				cout << "preview" << post << endl;
 				current_user->createWallPost(post);
 
 				cout << "post added successfully" << endl;

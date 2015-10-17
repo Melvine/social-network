@@ -55,7 +55,7 @@ class UserNetwork {
         void remove(int);
 
         void writeNetwork(char *);
-        void readNetwork(char*);
+        void readNetwork(string);
         User* login(string, string);
         int validateUser(string);
 
