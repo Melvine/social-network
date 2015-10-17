@@ -1,4 +1,6 @@
-# social-network
+# social-network by
+Melvin Nguyen mnguyen00@umail.ucsb.edu
+Kevin Lau
 
 HOW TO RUN:
 
@@ -16,7 +18,7 @@ e.g. typing in 1 will let you login to an account. typing 3 will exit the progra
 
 When logged in as a user, there will be a user's menu to display one's wall or add a new wallpost, as well as an exit program button. 
 
-When registering as a new user, there will be on-screen prompt asking for user fields such as username and password. Only unique usernames will be allowed on the system. When registration is complete, the created user will be logged in automatically and will land inside the user menu. 
+When registering as a new user, there will be on-screen prompt asking for user fields such as username, password, name, and phone number. Only unique usernames will be allowed on the system. When registration is complete, the created user will be logged in automatically and will land inside the user menu. 
 
 
 TO CREATE A NEW POST:

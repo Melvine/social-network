@@ -17,17 +17,16 @@ UserNetwork::UserNetwork(){
 }
 
 UserNetwork::UserNetwork(User user){
-    DoublyLinkedList<User> userList(user);
+  DoublyLinkedList<User> userList(user);
 
 }
 
 UserNetwork::~UserNetwork(){
-    userList.~DoublyLinkedList();
+  //userList.~DoublyLinkedList();
 }
 
 
 void UserNetwork::add(User user){
-    //cout << user.getUsername() << "this is in add";
     userList.add(user);
 }
 
@@ -43,7 +42,7 @@ string UserNetwork::getUserList(){
     Node<User> *temp = userList.getRoot();
 
     if(temp == NULL){
-      return "no root";
+      return "no user root \n";
     }
     while (temp != NULL){
       result = result + (temp->data.getUsername()) + "\n" ;
