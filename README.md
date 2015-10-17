@@ -1,6 +1,6 @@
 # social-network by
 Melvin Nguyen mnguyen00@umail.ucsb.edu
-Kevin Lau
+Kevin Lau kevinlau@umail.ucsb.edu
 
 HOW TO RUN:
 

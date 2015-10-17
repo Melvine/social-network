@@ -140,7 +140,7 @@ string User::displayInfo(){
 }
 
 // id
-void UserNetwork::writeNetwork(char* file){
+void UserNetwork::writeNetwork(const char* file){
 	ofstream myfile;
 	myfile.open(file);
 
@@ -161,7 +161,7 @@ void UserNetwork::writeNetwork(char* file){
 
 
 
-void UserNetwork::readNetwork(string user_file){
+void UserNetwork::readNetwork(const char*  user_file){
     ifstream myfile(user_file);
     string read, inData, line, s;
     string username, name, password, phoneNumber;
