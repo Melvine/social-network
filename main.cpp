@@ -57,6 +57,9 @@ int main(){
 			cout << "Enter your password" << endl;
 			cin >> password;
 			current_user = (facebook.login(username, password));
+			if(current_user == NULL){
+				main_menu_option = 0;
+			}
 		}
 		else if(main_menu_option == 2){
 				//register
@@ -111,11 +114,12 @@ int main(){
 			}
 
 			if(main_menu_option == 1){
-				cout << current_user->getWall() << endl << endl;
+				cout << current_user->getWall() << endl;
 				main_menu_option = 0;
 			}
 			else if(main_menu_option == 2){
-				cout << "write your post (press enter to submit): " << endl;
+				cout << "write your post (press enter to submit): ";
+				cin.ignore(); 
 				getline(cin, post);
 
 				cout << "preview" << post << endl;

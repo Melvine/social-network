@@ -26,7 +26,7 @@ string Wall::getWallList(){
     Node<WallPost> *temp = wallList.getRoot();
 
     if(temp == NULL){
-      return "no wall posts";
+      return "no wall posts \n";
     }
     while (temp != NULL){
       result = result + (temp->data.getMessage()) + "\n" ;

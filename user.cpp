@@ -187,8 +187,6 @@ void UserNetwork::readNetwork(char* user_file){
               phoneNumber = s;
               break;
         }
-
-        cout << s << endl;
         count++;
 
 
@@ -218,7 +216,8 @@ User* UserNetwork::login(string _username, string _password){
             temp = temp ->next;
         }
     }
-    cout << "User does not exist or you have entered your username/password incorrectly";
+    cout << "User does not exist or you have entered your username/password incorrectly \n";
+    return NULL;
 }
 
 int UserNetwork::validateUser(string _username){
