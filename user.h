@@ -54,8 +54,13 @@ class UserNetwork {
         void add(User);
         void remove(int);
 
+<<<<<<< HEAD
         void writeNetwork(const char*);
         void readNetwork(const char*);
+=======
+        void writeNetwork(char *);
+        void readNetwork(const char *);
+>>>>>>> de3fc3e3a48de67685e198316bcda09c92f5c1c5
         User* login(string, string);
         int validateUser(string);
 

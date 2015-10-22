@@ -161,7 +161,12 @@ void UserNetwork::writeNetwork(const char* file){
 
 
 
+<<<<<<< HEAD
 void UserNetwork::readNetwork(const char*  user_file){
+=======
+void UserNetwork::readNetwork(const char* user_file){
+
+>>>>>>> de3fc3e3a48de67685e198316bcda09c92f5c1c5
     ifstream myfile(user_file);
     string read, inData, line, s;
     string username, name, password, phoneNumber;
