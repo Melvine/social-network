@@ -234,11 +234,16 @@ int UserNetwork::validateUser(string _username){
     return 1;
 }
 
-
-/*
-void UserNetwork::readNetwork(char *file){
->>>>>>> b8947be49cb462fe0c968d67957c4ae4e08b2f38
-
+string UserNetwork::searchUser(string keyword){
+  Node <User> *root = userList.getRoot();
+  string result = "";
+  while(root != NULL){
+    string user_name = root->data.getUsername();
+    if(strstr(user_name.c_str(), keyword.c_str()) != NULL){
+      result+= user_name + "\n";
+    }
+    root = root->next;
+  }
+  return result;
 
 }
-*/

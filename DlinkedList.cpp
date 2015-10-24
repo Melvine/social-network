@@ -12,23 +12,23 @@ template <class D> DoublyLinkedList<D>::DoublyLinkedList(D _data){
 	add(_data);
 }
 template <class D> DoublyLinkedList<D>::~DoublyLinkedList(){
-	if(root == NULL){
-		return;
-	}
-	else{
-		Node<D> *tmp = root;
-		//get to the end of the linkedlist
-		while(tmp->next != NULL){
-			tmp = tmp->next;
-		}
-		//deletes every Node starting from the back
-		while(tmp != NULL){
-			Node<D> *unwanted = tmp;
-			tmp = tmp->previous;
-			delete unwanted;
-		}
-		//delete tmp;
-	}
+	// if(root == NULL){
+	// 	return;
+	// }
+	// else{
+	// 	Node<D> *tmp = root;
+	// 	//get to the end of the linkedlist
+	// 	while(tmp->next != NULL){
+	// 		tmp = tmp->next;
+	// 	}
+	// 	//deletes every Node starting from the back
+	// 	while(tmp != NULL){
+	// 		Node<D> *unwanted = tmp;
+	// 		tmp = tmp->previous;
+	// 		delete unwanted;
+	// 	}
+	// 	//delete tmp;
+	// }
 }
 template <class D> int DoublyLinkedList<D>::add(D data){
 	Node<D> *p = new Node<D>(data);

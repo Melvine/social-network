@@ -94,9 +94,12 @@ int main(){
 			while(main_menu_option == 0){
 				cout << "Chose an option" << endl;
 				cout << "1. Display my wall" << endl;
-				//cout << "2. Add post" << endl;
-				cout << "2. Logout" << endl;
-				cout << "3. Quit" << endl;
+				cout << "2. Add post" << endl;
+				cout << "3. Remove post" << endl;
+				cout << "4. search a user" << endl;
+				cout << "5. Delete your account" << endl;
+				cout << "6. Logout" << endl;
+				cout << "7. Quit" << endl;
 				cin >> main_menu_option;
 
 				if(!main_menu_option){
@@ -104,7 +107,7 @@ int main(){
 					cin.ignore();
 				}
 
-				if(main_menu_option == 0 || main_menu_option > 3 || main_menu_option < 0){
+				if(main_menu_option == 0 || main_menu_option > 7 || main_menu_option < 0){
 				cout << "please choose the following options" << endl << endl;
 					main_menu_option = 0;
 				}
@@ -114,23 +117,60 @@ int main(){
 					cout << current_user->getWall() << endl;
 					main_menu_option = 0;
 				}
-				// else if(main_menu_option == 2){
-				// 	cout << "write your post (press enter to submit): ";
-				// 	cin.ignore(); 
-				// 	getline(cin, post);
-
-				// 	current_user->createWallPost(post);
-
-				// 	cout << "post added successfully" << endl;
-				// 	main_menu_option = 0;
-				// }
 				else if(main_menu_option == 2){
+					cout << "write your post (press enter to submit): ";
+					cin.ignore(); 
+					getline(cin, post);
+
+					current_user->createWallPost(post);
+
+					cout << "post added successfully" << endl;
+					main_menu_option = 0;
+				}
+				else if(main_menu_option == 3){
+					cout << "enter post id to delete (press enter to submit): ";
+					cin.ignore(); 
+					getline(cin, post);
+
+					current_user->createWallPost(post);
+
+					cout << "post delete successfully" << endl;
+					main_menu_option = 0;
+				}
+				else if(main_menu_option == 4){
+					cout << "search by username or keywords: ";
+					cin.ignore(); 
+					getline(cin, post);
+					cout << facebook.searchUser(post) << endl;
+
+					cout << "end of search." << endl;
+					main_menu_option = 0;
+				}
+				else if(main_menu_option == 5){
+					//in development
+					cout << "Are you sure you want to delete your account?: 0 for yes or 1 for no";
+					cin >> main_menu_option;
+
+					if(!main_menu_option){
+						cout << "Error wrong input: returning back to the main menu";
+					}
+					else if (main_menu_option == 0){
+						//facebook.remove(current_user);
+						cout << "Your account is delete successfully" << endl;
+						break;
+					}
+					else if (main_menu_option == 1){
+						main_menu_option = 0;
+					}				
+
+				}
+				else if(main_menu_option == 6){
 					cout << "logged out successfully" << endl;
 					main_menu_option = 0;
 					current_user = NULL;
 					break; //exits this while loop
 				}
-				else if(main_menu_option == 3){
+				else if(main_menu_option == 7){
 					return 1;
 				}
 			}

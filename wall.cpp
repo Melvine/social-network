@@ -29,7 +29,8 @@ string Wall::getWallList(){
       return "no wall posts \n";
     }
     while (temp != NULL){
-      result = result + (temp->data.getMessage()) + "\n" ;
+      
+      result = result + to_string(temp->data.getId()) + ": " + (temp->data.getMessage()) + "\n" ;
       temp = temp->next;
     }
     

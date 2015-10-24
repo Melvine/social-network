@@ -53,7 +53,7 @@ class UserNetwork {
         // void validateUser();
         void add(User);
         void remove(int);
-
+        string searchUser(string);
         void writeNetwork(char *);
         void readNetwork(const char *);
         User* login(string, string);
