@@ -4,6 +4,7 @@
 #include "wall.h"
 #include "DlinkedList.h"
 #include <fstream>
+#include <vector>
 
 
 using namespace std;
@@ -18,7 +19,6 @@ class User {
     void editUserName(string);
     void editName(string);
     void editPassword(string);
-  //  void removeWallPost(WallPost);
     void editPhoneNumber(string);
     void setId(int);
 
@@ -28,11 +28,13 @@ class User {
     string getPassword();
     string getPhoneNumber();
     string getWall();
+    //UserFriends getUserFriends();
 
 
     int getId();
 
     void createWallPost(string);
+    void removeWallPost(int);
 
 
   private:
@@ -41,8 +43,29 @@ class User {
     string password;
     string phoneNumber;
     Wall wall;
+    //UserFriends friends;
+    //DoublyLinkedList<User> friendList;
+    //vector<int> friendRequest;
     int id;
 };
+
+
+// class UserFriends {
+//     public:
+//         UserFriends();
+
+//         string getFriendlist();
+
+
+//         string getPendinglist();
+//         void requestFriend(User);
+//         void befriend(User);
+//         void removeRequest(int);
+//         void newFriendRequest(User);
+
+//         vector<User> pendingFriends;
+//         DoublyLinkedList<User> friendsList;
+// };
 
 class UserNetwork {
     public:
@@ -53,6 +76,7 @@ class UserNetwork {
         // void validateUser();
         void add(User);
         void remove(int);
+        void removeUser(User);
         string searchUser(string);
         void writeNetwork(char *);
         void readNetwork(const char *);

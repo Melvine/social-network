@@ -5,24 +5,22 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <cstdlib>
-#include <cstdio>
+#include <algorithm>
 #include <sstream>
-
+#include <vector>
 
 using namespace std;
-UserNetwork::UserNetwork(){
-    DoublyLinkedList<User> userList;
 
+UserNetwork::UserNetwork(){
+  DoublyLinkedList<User> userList;
 }
 
 UserNetwork::UserNetwork(User user){
   DoublyLinkedList<User> userList(user);
-
 }
 
 UserNetwork::~UserNetwork(){
-  //userList.~DoublyLinkedList();
+  userList.~DoublyLinkedList();
 }
 
 
@@ -35,131 +33,36 @@ void UserNetwork::remove(int _id){
     userList.remove(_id);
 }
 
-
-
-string UserNetwork::getUserList(){
-    string result = "";
-    Node<User> *temp = userList.getRoot();
-
-    if(temp == NULL){
-      return "no user root \n";
+void UserNetwork::removeUser(User _id){
+    Node<User> *p = userList.getRoot();
+    while(p!= NULL){
+      if(p->data.getUsername() == _id.getUsername()){
+        p->data.editUserName("");
+        delete p;
+        return;
+      }
+      p = p->next;
     }
-    while (temp != NULL){
-      result = result + (temp->data.getUsername()) + "\n" ;
+}
+// id
+void UserNetwork::writeNetwork(char* file){
+  ofstream myfile;
+  myfile.open(file);
+
+  Node<User> *temp = userList.getRoot();
+  if(myfile.is_open()){
+    while(temp != NULL){
+      myfile << temp->data.displayInfo();
+      cout << temp->data.displayInfo();
       temp = temp->next;
     }
 
-    return result;
+    myfile.close();
+  }
+  else{
+    cout << "Unable to open the file" << endl;
+  }
 }
-
-
-User::User (string _username, string _password, string _name, string _phoneNumber){
-    name = _name;
-    username = _username;
-    password = _password;
-    phoneNumber = _phoneNumber;
-}
-
-User::User(string _username, string _password){
-    name = "";
-    username = _username;
-    password = _password;
-    phoneNumber = "";
-}
-
-User::User(){
-    name = "";
-    username = "";
-    password = "";
-    phoneNumber = "";
-}
-User::User(string _username,string _password,string _name){
-    name = _name;
-    username = _username;
-    password = _password;
-    phoneNumber = "";
-}
-
-void User::editName(string _name){
-    name = _name;
-
-}
-
-void User::editUserName(string _username){
-    username = _username;
-
-}
-
-void User::editPassword(string _password){
-    password = _password;
-
-}
-
-void User::editPhoneNumber(string _phoneNumber){
-    phoneNumber = _phoneNumber;
-
-}
-
-void User::setId(int _id){
-  id = _id;
-}
-
-void User::createWallPost(string _post){
-    WallPost newPost(_post, username);
-    wall.add(newPost);
-}
-
-// void User::removeWallPost(Wall _wallPost){
-//     delete _wallPost;
-
-// }
-
-string User::getUsername(){
-  return username;
-}
-
-string User::getName(){
-  return name;
-}
-
-string User::getPassword(){
-  return password;
-}
-
-string User::getPhoneNumber(){
-  return phoneNumber;
-}
-
-string User::getWall(){
-  return wall.getWallList();
-}
-
-string User::displayInfo(){
-    string info = "Username: " + username +"\n" + "Name: " + name + "\n" + "Password: " + password + "\n" + "Phonenumber: "+ phoneNumber;
-    return info;
-}
-
-// id
-void UserNetwork::writeNetwork(char* file){
-	ofstream myfile;
-	myfile.open(file);
-
-	Node<User> *temp = userList.getRoot();
-	if(myfile.is_open()){
-		while(temp != NULL){
-			myfile << temp->data.displayInfo();
-			cout << temp->data.displayInfo();
-			temp = temp->next;
-		}
-
-		myfile.close();
-	}
-	else{
-		cout << "Unable to open the file" << endl;
-	}
-}
-
-
 
 void UserNetwork::readNetwork(const char* user_file){
 
@@ -198,12 +101,6 @@ void UserNetwork::readNetwork(const char* user_file){
         }
       }
     }
-
-}
-
-
-int User::getId(){
-    return id;
 }
 
 User* UserNetwork::login(string _username, string _password){
@@ -229,7 +126,6 @@ int UserNetwork::validateUser(string _username){
         else {
             temp = temp -> next;
         }
-
     }
     return 1;
 }
@@ -237,6 +133,9 @@ int UserNetwork::validateUser(string _username){
 string UserNetwork::searchUser(string keyword){
   Node <User> *root = userList.getRoot();
   string result = "";
+  int i = 0;
+
+
   while(root != NULL){
     string user_name = root->data.getUsername();
     if(strstr(user_name.c_str(), keyword.c_str()) != NULL){
@@ -245,5 +144,142 @@ string UserNetwork::searchUser(string keyword){
     root = root->next;
   }
   return result;
+}
 
+string UserNetwork::getUserList(){
+  string result = "";
+  Node<User> *temp = userList.getRoot();
+
+  if(temp == NULL){
+    return "no user root \n";
+  }
+  while (temp != NULL){
+    result = result + (temp->data.getUsername()) + "\n" ;
+    temp = temp->next;
+  }
+
+  return result;
+}
+
+
+User::User (string _username, string _password, string _name, string _phoneNumber){
+  name = _name;
+  int i = 0;  
+
+  username = _username;
+  password = _password;
+  phoneNumber = _phoneNumber;
+}
+
+User::User(string _username, string _password){
+  name = "";
+  int i = 0;
+
+  
+  username = _username;
+  password = _password;
+  phoneNumber = "";
+}
+
+User::User(){
+  name = "";
+  username = "";
+  password = "";
+  phoneNumber = "";
+}
+User::User(string _username,string _password,string _name){
+  name = _name;
+  int i = 0;
+
+  
+  username = _username;
+  password = _password;
+  phoneNumber = "";
+}
+
+void User::editName(string _name){
+  name = _name;
+
+}
+
+void User::editUserName(string _username){
+  username = _username;
+
+}
+
+void User::editPassword(string _password){
+  password = _password;
+
+}
+
+void User::editPhoneNumber(string _phoneNumber){
+  phoneNumber = _phoneNumber;
+
+}
+
+void User::setId(int _id){
+  id = _id;
+}
+
+// void User::requestFriend(Node* root, string _name){
+//   if(root != NULL){
+//     return;
+//   }
+//   Node* tmp = root;
+//   while(tmp != NULL){
+//     if(_name == tmp->data.getUsername()){
+//       friendList.add(tmp);
+//       friendRequest.insert(0);
+//     }
+//     tmp = tmp->next;
+//   }
+// }
+
+// void User::addFriend(Node* root, string _name){
+//   //in developement 
+//   if(root != NULL){
+//     return;
+//   }
+
+// }
+
+void User::createWallPost(string _post){
+  WallPost newPost(_post, username);
+  wall.add(newPost);
+}
+
+void User::removeWallPost(int index){
+    wall.remove(index);
+}
+
+string User::getUsername(){
+  return username;
+}
+
+string User::getName(){
+  return name;
+}
+
+string User::getPassword(){
+  return password;
+}
+
+string User::getPhoneNumber(){
+  return phoneNumber;
+}
+
+string User::getWall(){
+  return wall.getWallList();
+}
+int User::getId(){
+    return id;
+}
+
+// UserFriends User::getUserFriends(){
+//   return friends;
+// }
+
+string User::displayInfo(){
+  string info = "Username: " + username +"\n" + "Name: " + name + "\n" + "Password: " + password + "\n" + "Phonenumber: "+ phoneNumber;
+  return info;
 }

@@ -10,9 +10,15 @@ class Node{
     Node *next;
     D data;
 };
+template <class D>
+class List {
+public:
+    virtual int add(D) = 0;
+    virtual int remove(int)= 0;
+};
 
 template <class D>
-class DoublyLinkedList {
+class DoublyLinkedList: public List<D>{
   public:
     DoublyLinkedList();
     DoublyLinkedList(D);
@@ -23,6 +29,6 @@ class DoublyLinkedList {
 
     Node<D>* getRoot();
   private:
-	Node<D> *root;
+	  Node<D> *root;
 };
 #endif
