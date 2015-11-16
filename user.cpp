@@ -1,55 +1,51 @@
 #include "user.h"
-#include "DlinkedList.h"
-#include "DlinkedList.cpp"
+#include "list.h"
+#include "list.cpp"
 #include "wall.h"
 #include <iostream>
 #include <string>
-#include <fstream>
-#include <algorithm>
 #include <sstream>
-#include <vector>
 
 using namespace std;
 
 UserNetwork::UserNetwork(){
-  DoublyLinkedList<User> userList;
+  userList = new LinkedList<User>;
 }
 
 UserNetwork::UserNetwork(User user){
-  DoublyLinkedList<User> userList(user);
+  userList = new LinkedList<User>;
+  userList->insert(0,user);
 }
 
 UserNetwork::~UserNetwork(){
-  userList.~DoublyLinkedList();
+  userList->~LinkedList();
 }
 
-
-void UserNetwork::add(User user){
-    userList.add(user);
+void UserNetwork::insert(User user){
+    userList->insert(0,user);
 }
-
 
 void UserNetwork::remove(int _id){
-    userList.remove(_id);
+    //userList.remove(_id);
 }
 
 void UserNetwork::removeUser(User _id){
-    Node<User> *p = userList.getRoot();
-    while(p!= NULL){
-      if(p->data.getUsername() == _id.getUsername()){
-        p->data.editUserName("");
-        delete p;
-        return;
-      }
-      p = p->next;
-    }
+    // Node<User> *p = userList.getRoot();
+    // while(p!= NULL){
+    //   if(p->data.getUsername() == _id.getUsername()){
+    //     p->data.editUserName("");
+    //     delete p;
+    //     return;
+    //   }
+    //   p = p->next;
+    // }
 }
 // id
 void UserNetwork::writeNetwork(char* file){
   ofstream myfile;
   myfile.open(file);
 
-  Node<User> *temp = userList.getRoot();
+  Node<User> *temp = userList->getRoot();
   if(myfile.is_open()){
     while(temp != NULL){
       myfile << temp->data.displayInfo();
@@ -97,14 +93,14 @@ void UserNetwork::readNetwork(const char* user_file){
 
             count = 0;
             User new_user (username, password, name, phoneNumber);
-            add(new_user);
+            insert(new_user);
         }
       }
     }
 }
 
 User* UserNetwork::login(string _username, string _password){
-    Node <User> *temp = userList.getRoot();
+    Node <User> *temp = userList->getRoot();
     while (temp != NULL){
         if ((temp->data.getUsername() == _username ) && (temp->data.getPassword() == _password)){
             return &(temp->data);
@@ -118,7 +114,7 @@ User* UserNetwork::login(string _username, string _password){
 }
 
 int UserNetwork::validateUser(string _username){
-    Node <User> *temp = userList.getRoot();
+    Node <User> *temp = userList->getRoot();
     while (temp != NULL){
         if ((temp->data.getUsername() == _username )){
             return 0;
@@ -131,7 +127,7 @@ int UserNetwork::validateUser(string _username){
 }
 
 string UserNetwork::searchUser(string keyword){
-  Node <User> *root = userList.getRoot();
+  Node <User> *root = userList->getRoot();
   string result = "";
   int i = 0;
 
@@ -148,7 +144,7 @@ string UserNetwork::searchUser(string keyword){
 
 string UserNetwork::getUserList(){
   string result = "";
-  Node<User> *temp = userList.getRoot();
+  Node<User> *temp = userList->getRoot();
 
   if(temp == NULL){
     return "no user root \n";
@@ -228,14 +224,14 @@ void User::setId(int _id){
 //   Node* tmp = root;
 //   while(tmp != NULL){
 //     if(_name == tmp->data.getUsername()){
-//       friendList.add(tmp);
+//       friendList.insert(tmp);
 //       friendRequest.insert(0);
 //     }
 //     tmp = tmp->next;
 //   }
 // }
 
-// void User::addFriend(Node* root, string _name){
+// void User::insertFriend(Node* root, string _name){
 //   //in developement 
 //   if(root != NULL){
 //     return;
@@ -244,15 +240,15 @@ void User::setId(int _id){
 // }
 
 void User::createWallPost(string _post){
-  WallPost newPost(_post, username);
-  wall.add(newPost);
+  // WallPost newPost(_post, username);
+  // wall.insert(newPost);
 }
 
 void User::removeWallPost(int index){
-    wall.remove(index);
+    // wall.remove(index);
 }
 
-string User::getUsername(){
+string User::getUsername() const{
   return username;
 }
 
@@ -269,7 +265,8 @@ string User::getPhoneNumber(){
 }
 
 string User::getWall(){
-  return wall.getWallList();
+  //return wall.getWallList();
+  return "";
 }
 int User::getId(){
     return id;

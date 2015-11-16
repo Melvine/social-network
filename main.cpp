@@ -1,8 +1,8 @@
 #include <iostream>
-#include "DlinkedList.h"
-#include "DlinkedList.cpp"
 #include "wall.h"
 #include "user.h"
+#include "list.h"
+#include "list.cpp"
 #include <string>
 
 using namespace std;
@@ -194,10 +194,29 @@ int main(){
 	// 	}
 	// }
 
+	User x("mel","pass","hi");
+	User y("mely","pass","hi");
+	User z("melz","pass","hi");
+	User a("mela","pass","hi");
+	List<User> *userList = new LinkedList<User>;
+	userList->set(0,x);
+	userList->set(1,y);
+	userList->set(2,z);
+	userList->set(3,a);
 
-	LinkedList<User> userList();
-	userList.insert(x);
-	userList.get();
+	// UserNetwork userNetwork(x);
+	// cout << userNetwork.getUserList();
+
+	// userList.insert(0,x);
+	// userList.insert(1,y);
+	// userList.insert(1,y);
+	// userList.insert(0,y);
+	//userList.remove(2);
+
+	//cout << x.getUsername() << endl;
+	int size = 4;
+	for(int i =0; i < size; i++)
+		cout << (userList->get(i)).getUsername() << endl;
 
 
 

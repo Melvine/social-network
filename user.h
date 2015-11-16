@@ -2,7 +2,7 @@
 #define USER_H
 #include <string>
 #include "wall.h"
-#include "DlinkedList.h"
+#include "list.h"
 #include <fstream>
 #include <vector>
 
@@ -23,7 +23,7 @@ class User {
     void setId(int);
 
     string displayInfo();
-    string getUsername();
+    string getUsername() const;
     string getName();
     string getPassword();
     string getPhoneNumber();
@@ -42,30 +42,12 @@ class User {
     string name;
     string password;
     string phoneNumber;
-    Wall wall;
+    //Wall wall;
     //UserFriends friends;
     //DoublyLinkedList<User> friendList;
     //vector<int> friendRequest;
     int id;
 };
-
-
-// class UserFriends {
-//     public:
-//         UserFriends();
-
-//         string getFriendlist();
-
-
-//         string getPendinglist();
-//         void requestFriend(User);
-//         void befriend(User);
-//         void removeRequest(int);
-//         void newFriendRequest(User);
-
-//         vector<User> pendingFriends;
-//         DoublyLinkedList<User> friendsList;
-// };
 
 class UserNetwork {
     public:
@@ -74,7 +56,7 @@ class UserNetwork {
         ~UserNetwork();
 
         // void validateUser();
-        void add(User);
+        void insert(User);
         void remove(int);
         void removeUser(User);
         string searchUser(string);
@@ -88,7 +70,7 @@ class UserNetwork {
 
 
     private:
-        DoublyLinkedList<User> userList;
+        LinkedList<User> *userList;
 };
 
 

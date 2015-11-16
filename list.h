@@ -37,18 +37,22 @@ template <class D>
 class LinkedList: public List<D>{
 	public:
 		LinkedList();
+		~LinkedList();
 	    void insert (int, const D &);
 		void remove (int);
 		void set (int, const D &);
 		D const & get (int) const;
+		Node<D>* getRoot(); 
 	private:
 		Node<D> *root;
-		
+
 };
 
 template <class D>
 class Array: public List<D>{
 	public:
+		Array();
+		~Array();
 	    void insert (int , const D &);
 		void remove (int);
 		void set (int, const D &);
