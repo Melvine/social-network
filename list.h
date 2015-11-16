@@ -57,6 +57,10 @@ class Array: public List<D>{
 		void remove (int);
 		void set (int, const D &);
 		D const & get (int) const;
+	private:
+		int size;
+		int elements;
+		D *myarray;
 };
 
 #endif

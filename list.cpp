@@ -147,6 +147,70 @@ template <class D> D const & LinkedList<D>::get (int pos) const{
 	return current->data;
 };
 
+
+
+
+
+
+template <class D> Array<D>::Array(){
+	size = 10;
+	elements = 0;
+	myarray = new D[size];
+};
+template <class D> Array<D>::~Array(){
+	//delete linkedlist and array objects
+};
+template <class D> void Array<D>::insert (int pos, const D & item){
+	if(pos > elements)
+		return;
+
+	elements++;
+
+	//creates a new array
+	if(elements == size){
+		size = size * 2;
+		D *newarray = new D[size];
+		//putting elements into new array
+		for(int i = 0; i < elements; i++){
+			newarray[i] = myarray[i];
+		}
+		myarray = NULL;
+		myarray = newarray; //myarray has now doubled in size
+	}
+
+	for(int i = elements; i > pos; i--){
+		myarray[i] = myarray[i-1];
+	}
+	myarray[pos] = item;
+};
+template <class D> void Array<D>::remove (int pos){
+	elements--;
+	for(int i = pos; i < elements; i++){
+		myarray[i] = myarray[i+1];
+	}
+};
+template <class D> void Array<D>::set (int pos, const D & item){
+	if(pos > elements)
+		return;
+
+	myarray[pos] = item;
+	//need to clean old user
+};
+template <class D> D const & Array<D>::get (int pos) const{
+	return myarray[pos];
+};
+
+
+
+
+
+
+
+
+
+
+
+
 template <class D> Node<D>::Node(){
   previous = NULL;
   next = NULL;

@@ -198,14 +198,28 @@ int main(){
 	User y("mely","pass","hi");
 	User z("melz","pass","hi");
 	User a("mela","pass","hi");
-	List<User> *userList = new LinkedList<User>;
-	userList->set(0,x);
-	userList->set(1,y);
-	userList->set(2,z);
-	userList->set(3,a);
+	// List<User> *userList = new LinkedList<User>;
+	// userList->set(0,x);
+	// userList->set(1,y);
+	// userList->set(2,z);
+	// userList->set(3,a);
 
-	// UserNetwork userNetwork(x);
-	// cout << userNetwork.getUserList();
+	List<User> *userList = new Array<User>;
+	userList->insert(0, x);
+	userList->insert(0, y);
+	userList->insert(0, z);
+
+	userList->insert(0, x);
+	userList->insert(0, y);
+	userList->insert(0, z);
+
+	userList->insert(0, x);
+	userList->insert(0, y);
+	userList->insert(0, z);
+
+	userList->insert(0, a);
+	userList->remove(0);
+
 
 	// userList.insert(0,x);
 	// userList.insert(1,y);
@@ -214,7 +228,7 @@ int main(){
 	//userList.remove(2);
 
 	//cout << x.getUsername() << endl;
-	int size = 4;
+	int size = 9;
 	for(int i =0; i < size; i++)
 		cout << (userList->get(i)).getUsername() << endl;
 
