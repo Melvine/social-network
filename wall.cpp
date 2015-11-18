@@ -18,10 +18,8 @@ Wall::~Wall(){
 
 }
 void Wall::insert(WallPost& wallpost){
-  id++;
-  wallpost.setId(id);
+  wallpost.setId(id++);
   wallList.insert(0,wallpost);
-
 }
 void Wall::remove(int _id){
   wallList.remove(_id);
@@ -29,13 +27,14 @@ void Wall::remove(int _id){
 string Wall::getWallList(){
     string result = "";
     Node<WallPost> *temp = wallList.getRoot();
-
+    int count = 0;
     if(temp == NULL){
       return "no wall posts \n";
     }
     while (temp != NULL){
-      result = result + to_string(temp->data.getId()) + ": " + (temp->data.getMessage()) + "\n" ;
+      result = result + to_string(count) + ": " + (temp->data.getMessage()) + "\n" ;
       temp = temp->next;
+      count++;
     };
 
     return result;

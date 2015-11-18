@@ -60,13 +60,15 @@ template <class D> void LinkedList<D>::remove (int pos){
 	int count = 0;
 
 	if(pos == 0){
-		if(root->next != NULL){
-			tmp = root->next;
-			(root->next)->previous = NULL;
-			delete root;	//delete root address
-			root = NULL;	//reinitialize root as NULL
-			root = tmp;
-		}
+		tmp = root->next;
+
+		if(tmp != NULL)
+			tmp->previous = NULL;
+
+		delete root;	//delete root address
+		root = NULL;	//reinitialize root as NULL
+		root = tmp;
+		
 		return;
 	}
 	while(count < pos){
@@ -83,16 +85,21 @@ template <class D> void LinkedList<D>::remove (int pos){
 			if(current->next->next != NULL){ //when the pos has an item
 				tmp = current->next->next;
 				tmp->previous = current;
-				delete current->next;	//delete root address
-				current->next = NULL;	//reinitialize root as NULL
 				current->next = tmp;
 			}
+			else{
+				current->next = NULL;
+			}
+			delete current->next;
+			current->next = NULL;
+
 		}
 
 		//iterate through the list
 		current = current->next;
 	}
 };
+
 template <class D> void LinkedList<D>::set (int pos, D & item){
 	Node<D> *p = new Node<D>(item);
 

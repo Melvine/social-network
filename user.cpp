@@ -105,14 +105,13 @@ User* UserNetwork::login(string _username, string _password){
 }
 
  int UserNetwork::validateUser(string _username){
-     for (int i = 0; i <userList.length(); i++){
-       if (userList.get(i).getUsername() == _username){
-	 return 0;
-       }
+    for (int i = 0; i <userList.length(); i++){
+      if (userList.get(i).getUsername() == _username){
+	      return 0;
+      }
+    } 
      
-     
-     return 1;
-     }
+    return 1;
  }
 
 string UserNetwork::searchUser(string keyword){
@@ -120,6 +119,8 @@ string UserNetwork::searchUser(string keyword){
 
   for(int i = 0; i < userList.length(); i++){
      string user_name = userList.get(i).getUsername();
+     transform(user_name.begin(), user_name.end(), user_name.begin(), ::tolower);
+     transform(keyword.begin(), keyword.end(), keyword.begin(), ::tolower);
      if(strstr(user_name.c_str(), keyword.c_str()) != NULL){
        result+= user_name + "\n";
      }
@@ -196,7 +197,7 @@ void User::createWallPost(string _post){
 }
 
 void User::removeWallPost(int index){
-  // wall.remove(index);
+  wall.remove(index);
 }
 
 string User::getUsername(){

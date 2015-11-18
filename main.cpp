@@ -132,12 +132,12 @@ int main(){
 					main_menu_option = 0;
 				}
 				else if(main_menu_option == 3){
-					// int index;
-					// cout << "enter post id to delete (press enter to submit): ";
-					// cin.ignore(); 
-					// cin >> index;
+					int index;
+					cout << "enter post id to delete (press enter to submit): ";
+					cin.ignore(); 
+					cin >> index;
 
-					// current_user->removeWallPost(index);
+					current_user->removeWallPost(index);
 
 					cout << "post delete successfully" << endl;
 					main_menu_option = 0;
@@ -192,62 +192,6 @@ int main(){
 			}
 		}
 	}
-
-
-
-
-//DEBUGGER PART 2
-  
-	// User x("mel","pass","hi");
-	// User y("mely","pass","hi");
-	// User z("melz","pass","hi");
-	// User a("mela","pass","hi");
-
-
-	// List<User> *userList = new LinkedList<User>;
-	// userList->set(0,x);
-	// userList->set(1,y);
-	// userList->set(2,z);
-	// userList->set(3,a);
-
-	// List<User> *userList = new Array<User>;
-	// userList->insert(0, x);
-	// userList->insert(0, y);
-	// userList->insert(0, z);
-
-	// userList->insert(0, x);
-	// userList->insert(0, y);
-	// userList->insert(0, z);
-
-	// userList->insert(0, x);
-	// userList->insert(3, y);
-	// userList->insert(0, z);
-
-	// userList->insert(0, a);
-	//userList->remove(0);
-	// UserNetwork network;
-	// network.readNetwork("infile.txt");
-	// network.insert(y);
-	// network.remove(1);
-	
-	// userList.insert(0,x);
-	// userList.insert(1,y);
-	// userList.insert(1,y);
-	// userList.insert(0,y);
-	//userList.remove(2);
-
-	//cout << x.getUsername() << endl;
-	// int size = 9;
-	// cout << network.getUserList();
-	// for(int i =0; i < size; i++)
-	// 	cout << (userList->get(i)).getUsername() << endl;
-
-
-
-
-
-
-
 
 
 
