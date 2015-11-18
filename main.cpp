@@ -51,7 +51,7 @@ int main(){
 				getline(cin, username);
 				cout << "Enter your password" << endl;
 				getline(cin, password);
-				current_user = &(facebook.login(username, password));
+				current_user = (facebook.login(username, password));
 				if(current_user == NULL){
 					main_menu_option = 0;
 				}

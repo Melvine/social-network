@@ -2,7 +2,9 @@
 #include <iostream>
 using namespace std;
 
-template <class D> LinkedList<D>::LinkedList(){};
+template <class D> LinkedList<D>::LinkedList(){
+	root = NULL;
+};
 template <class D> LinkedList<D>::~LinkedList(){};
 template <class D> void LinkedList<D>::insert (int pos, D & item){
 	Node<D> *p = new Node<D>(item);

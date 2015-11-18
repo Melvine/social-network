@@ -7,16 +7,21 @@
 using namespace std;
 
 Wall::Wall(){
-
+  id = 0;
 }
 Wall::Wall(WallPost& wallpost){
+  id = 0;
+  wallpost.setId(0);
   wallList.insert(0,wallpost);
 }
 Wall::~Wall(){
 
 }
 void Wall::insert(WallPost& wallpost){
+  id++;
+  wallpost.setId(id);
   wallList.insert(0,wallpost);
+
 }
 void Wall::remove(int _id){
   wallList.remove(_id);
@@ -31,7 +36,8 @@ string Wall::getWallList(){
     while (temp != NULL){
       result = result + to_string(temp->data.getId()) + ": " + (temp->data.getMessage()) + "\n" ;
       temp = temp->next;
-    }
+    };
+
     return result;
 }
 

@@ -37,6 +37,7 @@ class Wall {
 
     private:
       LinkedList<WallPost> wallList;
+      int id;  
 };
 
 #endif

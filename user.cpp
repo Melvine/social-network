@@ -9,7 +9,7 @@
 using namespace std;
 
 UserNetwork::UserNetwork(){
-  
+
 }
 
 UserNetwork::UserNetwork(User user){
@@ -93,31 +93,16 @@ void UserNetwork::readNetwork(char* user_file){
     }
 }
 
-User& UserNetwork::login(string _username, string _password){
+User* UserNetwork::login(string _username, string _password){
     for(int i = 0; i < userList.length(); i++){
       if(userList.get(i).getUsername() == _username && userList.get(i).getPassword() == _password){
-        return userList.get(i);
+        return &userList.get(i);
       }
     }
 
     cout << "User does not exist or you have entered your username/password incorrectly \n";
+    return NULL;
 }
-
-// string UserNetwork::searchUser(string keyword){
-//   Node <User> *root = userList->getRoot();
-//   string result = "";
-//   int i = 0;
-
-
-//   while(root != NULL){
-//     string user_name = root->data.getUsername();
-//     if(strstr(user_name.c_str(), keyword.c_str()) != NULL){
-//       result+= user_name + "\n";
-//     }
-//     root = root->next;
-//   }
-//   return result;
-// }
 
  int UserNetwork::validateUser(string _username){
      for (int i = 0; i <userList.length(); i++){
@@ -131,18 +116,7 @@ User& UserNetwork::login(string _username, string _password){
  }
 
 string UserNetwork::searchUser(string keyword){
-   //Node <User> *root = userList->getRoot();
    string result = "";
-   // int i = 0;
-   // while(root != NULL){
-   //   string user_name = root->data.getUsername();
-   //   if(strstr(user_name.c_str(), keyword.c_str()) != NULL){
-   //     result+= user_name + "\n";
-   //   }
-   //   root = root->next;
-
-     
-   // }
 
   for(int i = 0; i < userList.length(); i++){
      string user_name = userList.get(i).getUsername();
