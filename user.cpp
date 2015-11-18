@@ -95,19 +95,6 @@ const User UserNetwork::login(string _username, string _password){
     cout << "User does not exist or you have entered your username/password incorrectly \n";
 }
 
-// int UserNetwork::validateUser(string _username){
-//     Node <User> *temp = userList->getRoot();
-//     while (temp != NULL){
-//         if ((temp->data.getUsername() == _username )){
-//             return 0;
-//         }
-//         else {
-//             temp = temp -> next;
-//         }
-//     }
-//     return 1;
-// }
-
 // string UserNetwork::searchUser(string keyword){
 //   Node <User> *root = userList->getRoot();
 //   string result = "";
@@ -123,6 +110,36 @@ const User UserNetwork::login(string _username, string _password){
 //   }
 //   return result;
 // }
+
+ int UserNetwork::validateUser(string _username){
+     for (int i = 0; i <userList.length(); i++){
+       if (userList.get(i).getUsername() == _username){
+	 return 0;
+       }
+     
+     
+     return 1;
+     }
+ }
+/*
+string UserNetwork::searchUser(string keyword){
+   Node <User> *root = userList->getRoot();
+   string result = "";
+   int i = 0;
+
+
+   while(root != NULL){
+     string user_name = root->data.getUsername();
+     if(strstr(user_name.c_str(), keyword.c_str()) != NULL){
+       result+= user_name + "\n";
+     }
+     root = root->next;
+
+     
+   }
+   return result;
+ }
+*/
 
 string UserNetwork::getUserList() {
   string result = "";

@@ -54,7 +54,7 @@ class UserNetwork {
         // void writeNetwork(char *);
         void readNetwork(const char *);
         const User login(string, string);
-        // int validateUser(string);
+        int validateUser(string);
 
         string getUserList();
 
