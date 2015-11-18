@@ -194,10 +194,14 @@ int main(){
 	// 	}
 	// }
 
+
+  
 	User x("mel","pass","hi");
 	User y("mely","pass","hi");
 	User z("melz","pass","hi");
 	User a("mela","pass","hi");
+
+
 	// List<User> *userList = new LinkedList<User>;
 	// userList->set(0,x);
 	// userList->set(1,y);
@@ -219,10 +223,10 @@ int main(){
 
 	// userList->insert(0, a);
 	//userList->remove(0);
-	UserNetwork network(x);
-	network.insert(y);
-	network.remove(1);
+	UserNetwork network;
 
+	network.readNetwork("infile.txt");
+	
 	// userList.insert(0,x);
 	// userList.insert(1,y);
 	// userList.insert(1,y);

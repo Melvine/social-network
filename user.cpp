@@ -46,87 +46,90 @@ void UserNetwork::remove(int pos){
 //   }
 // }
 
-// void UserNetwork::readNetwork(const char* user_file){
+ void UserNetwork::readNetwork(const char* user_file){
 
-//     ifstream myfile(user_file);
-//     string read, inData, line, s;
-//     string username, name, password, phoneNumber;
+     ifstream myfile(user_file);
+     string read, inData, line, s;
+     string username, name, password, phoneNumber;
 
-//     int count = 0;
-//     while (getline(myfile, line).good()){
-//       stringstream iss;
-//       iss << line;
+     int count = 0;
+     while (getline(myfile, line).good()){
+       stringstream iss;
+       iss << line;
 
-//       while ( getline(iss, s, '|') ){
-//         switch (count){
-//           case 0:
-//               username = s;
-//               break;
-//           case 1:
-//               password = s;
-//               break;
-//           case 2:
-//               name = s;
-//               break;
-//           case 3:
-//               phoneNumber = s;
-//               break;
-//         }
-//         count++;
-
-
-//         if (count > 3){
-
-//             count = 0;
-//             User new_user (username, password, name, phoneNumber);
-//             insert(new_user);
-//         }
-//       }
-//     }
-// }
-
-// User* UserNetwork::login(string _username, string _password){
-//     Node <User> *temp = userList->getRoot();
-//     while (temp != NULL){
-//         if ((temp->data.getUsername() == _username ) && (temp->data.getPassword() == _password)){
-//             return &(temp->data);
-//         }
-//         else{
-//             temp = temp ->next;
-//         }
-//     }
-//     cout << "User does not exist or you have entered your username/password incorrectly \n";
-//     return NULL;
-// }
-
-// int UserNetwork::validateUser(string _username){
-//     Node <User> *temp = userList->getRoot();
-//     while (temp != NULL){
-//         if ((temp->data.getUsername() == _username )){
-//             return 0;
-//         }
-//         else {
-//             temp = temp -> next;
-//         }
-//     }
-//     return 1;
-// }
-
-// string UserNetwork::searchUser(string keyword){
-//   Node <User> *root = userList->getRoot();
-//   string result = "";
-//   int i = 0;
+       while ( getline(iss, s, '|') ){
+         switch (count){
+           case 0:
+               username = s;
+               break;
+           case 1:
+               password = s;
+               break;
+           case 2:
+               name = s;
+               break;
+           case 3:
+               phoneNumber = s;
+               break;
+         }
+         count++;
 
 
-//   while(root != NULL){
-//     string user_name = root->data.getUsername();
-//     if(strstr(user_name.c_str(), keyword.c_str()) != NULL){
-//       result+= user_name + "\n";
-//     }
-//     root = root->next;
-//   }
-//   return result;
-// }
+         if (count > 3){
+
+             count = 0;
+             User new_user (username, password, name, phoneNumber);
+             userList.insert(userList.length(), new_user);
+         }
+       }
+     }
+ }
+
+/*
+User* UserNetwork::login(string _username, string _password){
+    Node <User> *temp = userList->getRoot();
+    while (temp != NULL){
+        if ((temp->data.getUsername() == _username ) && (temp->data.getPassword() == _password)){
+            return &(temp->data);
+        }
+        else{
+            temp = temp ->next;
+        }
+    }
+    cout << "User does not exist or you have entered your username/password incorrectly \n";
+    return NULL;
+}
+*/
+
+ int UserNetwork::validateUser(string _username){
+     for (int i = 0; i <userList.length(); i++){
+       if (userList.get(i).getUsername() == _username){
+	 return 0;
+       }
+     
+     
+     return 1;
+     }
+ }
+/*
+string UserNetwork::searchUser(string keyword){
+   Node <User> *root = userList->getRoot();
+   string result = "";
+   int i = 0;
+
+
+   while(root != NULL){
+     string user_name = root->data.getUsername();
+     if(strstr(user_name.c_str(), keyword.c_str()) != NULL){
+       result+= user_name + "\n";
+     }
+     root = root->next;
+
+     
+   }
+   return result;
+ }
+*/
 
 string UserNetwork::getUserList(){
   string result = "";
