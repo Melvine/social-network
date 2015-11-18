@@ -27,10 +27,10 @@ class WallPost {
 class Wall {
     public:
       Wall();
-      Wall(WallPost);
+      Wall(WallPost&);
       ~Wall();
 
-      void add(WallPost);
+      void insert(WallPost&);
       void remove(int); 
 
       string getWallList();    

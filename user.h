@@ -27,8 +27,6 @@ class User {
     string getPassword();
     string getPhoneNumber();
     string getWall();
-    //UserFriends getUserFriends();
-
 
     void createWallPost(string);
     void removeWallPost(int);
@@ -39,6 +37,7 @@ class User {
     string name;
     string password;
     string phoneNumber;
+    Wall wall;
 };
 
 class UserNetwork {
@@ -50,7 +49,8 @@ class UserNetwork {
         // void validateUser();
         void insert(User);
         void remove(int);
-        // string searchUser(string);
+        void removeUser(User);
+        string searchUser(string);
         // void writeNetwork(char *);
         void readNetwork(char *);
         User& login(string, string);

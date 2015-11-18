@@ -27,6 +27,13 @@ void UserNetwork::insert(User user){
 void UserNetwork::remove(int pos){
   userList.remove(pos);
 }
+void UserNetwork::removeUser(User user){
+  for(int i = 0; i < userList.length(); i++){
+    if(userList.get(i).getUsername() == user.getUsername()){
+      userList.remove(i);
+    }
+  }    
+}
 // // id
 // void UserNetwork::writeNetwork(char* file){
 //   ofstream myfile;
@@ -122,25 +129,31 @@ User& UserNetwork::login(string _username, string _password){
      return 1;
      }
  }
-/*
+
 string UserNetwork::searchUser(string keyword){
-   Node <User> *root = userList->getRoot();
+   //Node <User> *root = userList->getRoot();
    string result = "";
-   int i = 0;
+   // int i = 0;
+   // while(root != NULL){
+   //   string user_name = root->data.getUsername();
+   //   if(strstr(user_name.c_str(), keyword.c_str()) != NULL){
+   //     result+= user_name + "\n";
+   //   }
+   //   root = root->next;
 
+     
+   // }
 
-   while(root != NULL){
-     string user_name = root->data.getUsername();
+  for(int i = 0; i < userList.length(); i++){
+     string user_name = userList.get(i).getUsername();
      if(strstr(user_name.c_str(), keyword.c_str()) != NULL){
        result+= user_name + "\n";
      }
-     root = root->next;
+  }
 
-     
-   }
-   return result;
+  return result;
  }
-*/
+
 
 string UserNetwork::getUserList() {
   string result = "";
@@ -204,12 +217,12 @@ void User::editPhoneNumber(string _phoneNumber){
 }
 
 void User::createWallPost(string _post){
-  // WallPost newPost(_post, username);
-  // wall.insert(newPost);
+  WallPost newPost(_post, username);
+  wall.insert(newPost);
 }
 
 void User::removeWallPost(int index){
-    // wall.remove(index);
+  // wall.remove(index);
 }
 
 string User::getUsername(){
@@ -229,8 +242,7 @@ string User::getPhoneNumber(){
 }
 
 string User::getWall(){
-  //return wall.getWallList();
-  return "";
+  return wall.getWallList();
 }
 
 string User::displayInfo(){

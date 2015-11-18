@@ -143,10 +143,10 @@ int main(){
 					main_menu_option = 0;
 				}
 				else if(main_menu_option == 4){
-					// cout << "search by username or keywords: ";
-					// cin.ignore(); 
-					// getline(cin, post);
-					// cout << facebook.searchUser(post) << endl;
+					cout << "search by username or keywords: ";
+					cin.ignore(); 
+					getline(cin, post);
+					cout << facebook.searchUser(post) << endl;
 
 					cout << "end of search." << endl;
 					main_menu_option = 0;

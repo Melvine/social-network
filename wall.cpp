@@ -9,13 +9,13 @@ using namespace std;
 Wall::Wall(){
 
 }
-Wall::Wall(WallPost wallpost){
+Wall::Wall(WallPost& wallpost){
   wallList.insert(0,wallpost);
 }
 Wall::~Wall(){
 
 }
-void Wall::add(WallPost wallpost){
+void Wall::insert(WallPost& wallpost){
   wallList.insert(0,wallpost);
 }
 void Wall::remove(int _id){
