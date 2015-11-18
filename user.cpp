@@ -47,7 +47,7 @@ void UserNetwork::remove(int pos){
 //   }
 // }
 
-void UserNetwork::readNetwork(const char* user_file){
+void UserNetwork::readNetwork(char* user_file){
 
     ifstream myfile(user_file);
     string read, inData, line, s;
@@ -86,12 +86,13 @@ void UserNetwork::readNetwork(const char* user_file){
     }
 }
 
-const User UserNetwork::login(string _username, string _password){
+User& UserNetwork::login(string _username, string _password){
     for(int i = 0; i < userList.length(); i++){
       if(userList.get(i).getUsername() == _username && userList.get(i).getPassword() == _password){
         return userList.get(i);
       }
     }
+
     cout << "User does not exist or you have entered your username/password incorrectly \n";
 }
 
@@ -211,28 +212,28 @@ void User::removeWallPost(int index){
     // wall.remove(index);
 }
 
-string User::getUsername() const{
+string User::getUsername(){
   return username;
 }
 
-string User::getName() const{
+string User::getName(){ 
   return name;
 }
 
-string User::getPassword() const{
+string User::getPassword(){
   return password;
 }
 
-string User::getPhoneNumber() const{
+string User::getPhoneNumber(){ 
   return phoneNumber;
 }
 
-string User::getWall() const{
+string User::getWall(){
   //return wall.getWallList();
   return "";
 }
 
-string User::displayInfo() const{
+string User::displayInfo(){
   string info = "Username: " + username +"\n" + "Name: " + name + "\n" + "Password: " + password + "\n" + "Phonenumber: "+ phoneNumber;
   return info;
 }

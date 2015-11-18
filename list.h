@@ -14,7 +14,7 @@ class Node{
 template <class D>
 class List {
 	public:
-		virtual void insert (int, const D &)=0;
+		virtual void insert (int,  D &)=0;
 		/* Inserts the item right before position pos, growing the list by 1.
 		pos must be between 0 and the current length of the list.
 		(feel free return bool, if you want.) */
@@ -23,12 +23,12 @@ class List {
 		/* Removes the element at position pos, shrinking the list by 1.
 		pos must be between 0 and the current length of the list minus 1. */
 
-		virtual void set (int, const D & )=0;
+		virtual void set (int,  D & )=0;
 		/* overwrites position pos in the list with item.
 		Does not change the length of the list.
 		pos must be between 0 and the current length of the list minus 1. */
 
-		virtual D const & get (int) const=0;
+		virtual D  & get (int) =0;
 		/* returns the item at position pos, not changing the list.
 		pos must be between 0 and the current length of the list minus 1. */
 };
@@ -38,10 +38,10 @@ class LinkedList: public List<D>{
 	public:
 		LinkedList();
 		~LinkedList();
-	    void insert (int, const D &);
+	    void insert (int,  D &);
 		void remove (int);
-		void set (int, const D &);
-		D const & get (int) const;
+		void set (int,  D &);
+		D  & get (int) ;
 		Node<D>* getRoot(); 
 	private:
 		Node<D> *root;
@@ -52,11 +52,11 @@ class Array: public List<D>{
 	public:
 		Array();
 		~Array();
-	    void insert (int , const D &);
+	    void insert (int ,  D &);
 		void remove (int);
-		void set (int, const D &);
-		D const & get (int) const;
-		int const length() const;
+		void set (int,  D &);
+		D  & get (int) ;
+		int  length() ;
 	private:
 		int size;
 		int elements;

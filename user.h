@@ -21,12 +21,12 @@ class User {
     void editPassword(string);
     void editPhoneNumber(string);
 
-    string displayInfo() const;
-    string getUsername() const;
-    string getName() const;
-    string getPassword() const;
-    string getPhoneNumber() const;
-    string getWall() const;
+    string displayInfo();
+    string getUsername();
+    string getName();
+    string getPassword();
+    string getPhoneNumber();
+    string getWall();
     //UserFriends getUserFriends();
 
 
@@ -52,14 +52,11 @@ class UserNetwork {
         void remove(int);
         // string searchUser(string);
         // void writeNetwork(char *);
-        void readNetwork(const char *);
-        const User login(string, string);
+        void readNetwork(char *);
+        User& login(string, string);
         int validateUser(string);
 
         string getUserList();
-
-
-
     private:
         Array<User> userList;
 };

@@ -4,7 +4,7 @@ using namespace std;
 
 template <class D> LinkedList<D>::LinkedList(){};
 template <class D> LinkedList<D>::~LinkedList(){};
-template <class D> void LinkedList<D>::insert (int pos, const D & item){
+template <class D> void LinkedList<D>::insert (int pos, D & item){
 	Node<D> *p = new Node<D>(item);
 
 	//checks if root is NULL else insert the item here
@@ -91,7 +91,7 @@ template <class D> void LinkedList<D>::remove (int pos){
 		current = current->next;
 	}
 };
-template <class D> void LinkedList<D>::set (int pos, const D & item){
+template <class D> void LinkedList<D>::set (int pos, D & item){
 	Node<D> *p = new Node<D>(item);
 
 	//checks if root is NULL else insert the item here
@@ -139,7 +139,7 @@ template <class D> void LinkedList<D>::set (int pos, const D & item){
 template <class D> Node<D>* LinkedList<D>::getRoot(){
 	return root;
 };
-template <class D> D const & LinkedList<D>::get (int pos) const{
+template <class D> D & LinkedList<D>::get (int pos){
 	Node<D> *current = root;
 	for(int i = 0; i < pos; i++){
 		current = current->next;
@@ -160,7 +160,7 @@ template <class D> Array<D>::Array(){
 template <class D> Array<D>::~Array(){
 	//delete linkedlist and array objects
 };
-template <class D> void Array<D>::insert (int pos, const D & item){
+template <class D> void Array<D>::insert (int pos, D & item){
 	if(pos > elements)
 		return;
 
@@ -189,17 +189,17 @@ template <class D> void Array<D>::remove (int pos){
 		myarray[i] = myarray[i+1];
 	}
 };
-template <class D> void Array<D>::set (int pos, const D & item){
+template <class D> void Array<D>::set (int pos, D & item){
 	if(pos > elements)
 		return;
 
 	myarray[pos] = item;
 	//need to clean old user
 };
-template <class D> D const & Array<D>::get (int pos) const{
+template <class D> D & Array<D>::get (int pos){
 	return myarray[pos];
 };
-template <class D> int const Array<D>::length() const{
+template <class D> int Array<D>::length(){
 	return elements;
 };
 
