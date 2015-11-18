@@ -45,7 +45,6 @@ class LinkedList: public List<D>{
 		Node<D>* getRoot(); 
 	private:
 		Node<D> *root;
-
 };
 
 template <class D>
@@ -57,6 +56,7 @@ class Array: public List<D>{
 		void remove (int);
 		void set (int, const D &);
 		D const & get (int) const;
+		int const length() const;
 	private:
 		int size;
 		int elements;

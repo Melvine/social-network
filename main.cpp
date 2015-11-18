@@ -204,22 +204,24 @@ int main(){
 	// userList->set(2,z);
 	// userList->set(3,a);
 
-	List<User> *userList = new Array<User>;
-	userList->insert(0, x);
-	userList->insert(0, y);
-	userList->insert(0, z);
+	// List<User> *userList = new Array<User>;
+	// userList->insert(0, x);
+	// userList->insert(0, y);
+	// userList->insert(0, z);
 
-	userList->insert(0, x);
-	userList->insert(0, y);
-	userList->insert(0, z);
+	// userList->insert(0, x);
+	// userList->insert(0, y);
+	// userList->insert(0, z);
 
-	userList->insert(0, x);
-	userList->insert(0, y);
-	userList->insert(0, z);
+	// userList->insert(0, x);
+	// userList->insert(3, y);
+	// userList->insert(0, z);
 
-	userList->insert(0, a);
-	userList->remove(0);
-
+	// userList->insert(0, a);
+	//userList->remove(0);
+	UserNetwork network(x);
+	network.insert(y);
+	network.remove(1);
 
 	// userList.insert(0,x);
 	// userList.insert(1,y);
@@ -229,8 +231,9 @@ int main(){
 
 	//cout << x.getUsername() << endl;
 	int size = 9;
-	for(int i =0; i < size; i++)
-		cout << (userList->get(i)).getUsername() << endl;
+	cout << network.getUserList();
+	// for(int i =0; i < size; i++)
+	// 	cout << (userList->get(i)).getUsername() << endl;
 
 
 

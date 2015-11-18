@@ -199,7 +199,9 @@ template <class D> void Array<D>::set (int pos, const D & item){
 template <class D> D const & Array<D>::get (int pos) const{
 	return myarray[pos];
 };
-
+template <class D> int const Array<D>::length() const{
+	return elements;
+};
 
 
 
