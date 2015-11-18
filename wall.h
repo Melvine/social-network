@@ -1,42 +1,42 @@
-// #ifndef WALL_H
-// #define WALL_H
-// #include <string>
-// #include "list.h"
+#ifndef WALL_H
+#define WALL_H
+#include <string>
+#include "list.h"
 
-// using namespace std;
+using namespace std;
 
-// class WallPost {
-//     public:
-//         WallPost();
-//         WallPost(string);
-//         WallPost(string, string);
+class WallPost {
+    public:
+        WallPost();
+        WallPost(string);
+        WallPost(string, string);
         
-//         void editMessage(string);
-//         void setId(int);
-// 		string getUsername();
-//         string getMessage();
-//         string getWallPost();
-//         int getId();
-//     private:
-//         string message;
-//         time_t timestamp;
-//         string username;  
-//         int id;    
-// };  
+        void editMessage(string);
+        void setId(int);
+		string getUsername();
+        string getMessage();
+        string getWallPost();
+        int getId();
+    private:
+        string message;
+        time_t timestamp;
+        string username;  
+        int id;    
+};  
 
-// class Wall {
-//     public:
-//       Wall();
-//       Wall(WallPost);
-//       ~Wall();
+class Wall {
+    public:
+      Wall();
+      Wall(WallPost);
+      ~Wall();
 
-//       void add(WallPost);
-//       void remove(int); 
+      void add(WallPost);
+      void remove(int); 
 
-//       string getWallList();    
+      string getWallList();    
 
-//     private:
-//       DoublyLinkedList<WallPost> wallList;
-// };
+    private:
+      LinkedList<WallPost> wallList;
+};
 
-// #endif
+#endif

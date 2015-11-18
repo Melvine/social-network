@@ -9,6 +9,7 @@
 using namespace std;
 
 UserNetwork::UserNetwork(){
+  
 }
 
 UserNetwork::UserNetwork(User user){
@@ -46,58 +47,53 @@ void UserNetwork::remove(int pos){
 //   }
 // }
 
-// void UserNetwork::readNetwork(const char* user_file){
+void UserNetwork::readNetwork(const char* user_file){
 
-//     ifstream myfile(user_file);
-//     string read, inData, line, s;
-//     string username, name, password, phoneNumber;
+    ifstream myfile(user_file);
+    string read, inData, line, s;
+    string username, name, password, phoneNumber;
 
-//     int count = 0;
-//     while (getline(myfile, line).good()){
-//       stringstream iss;
-//       iss << line;
+    int count = 0;
+    while (getline(myfile, line).good()){
+      stringstream iss;
+      iss << line;
 
-//       while ( getline(iss, s, '|') ){
-//         switch (count){
-//           case 0:
-//               username = s;
-//               break;
-//           case 1:
-//               password = s;
-//               break;
-//           case 2:
-//               name = s;
-//               break;
-//           case 3:
-//               phoneNumber = s;
-//               break;
-//         }
-//         count++;
+      while ( getline(iss, s, '|') ){
+        switch (count){
+          case 0:
+              username = s;
+              break;
+          case 1:
+              password = s;
+              break;
+          case 2:
+              name = s;
+              break;
+          case 3:
+              phoneNumber = s;
+              break;
+        }
+        count++;
 
 
-//         if (count > 3){
+        if (count > 3){
 
-//             count = 0;
-//             User new_user (username, password, name, phoneNumber);
-//             insert(new_user);
-//         }
-//       }
-//     }
-// }
+            count = 0;
+            User new_user (username, password, name, phoneNumber);
+            userList.insert(userList.length(),new_user);
+        }
+      }
+    }
+}
 
-// User* UserNetwork::login(string _username, string _password){
-//     Node <User> *temp = userList->getRoot();
-//     while (temp != NULL){
-//         if ((temp->data.getUsername() == _username ) && (temp->data.getPassword() == _password)){
-//             return &(temp->data);
-//         }
-//         else{
-//             temp = temp ->next;
-//         }
-//     }
-//     cout << "User does not exist or you have entered your username/password incorrectly \n";
-//     return NULL;
-// }
+const User UserNetwork::login(string _username, string _password){
+    for(int i = 0; i < userList.length(); i++){
+      if(userList.get(i).getUsername() == _username && userList.get(i).getPassword() == _password){
+        return userList.get(i);
+      }
+    }
+    cout << "User does not exist or you have entered your username/password incorrectly \n";
+}
 
 // int UserNetwork::validateUser(string _username){
 //     Node <User> *temp = userList->getRoot();
@@ -128,7 +124,7 @@ void UserNetwork::remove(int pos){
 //   return result;
 // }
 
-string UserNetwork::getUserList(){
+string UserNetwork::getUserList() {
   string result = "";
   for(int i = 0; i < userList.length(); i++){
     result = result + userList.get(i).getUsername() + "\n";
@@ -189,29 +185,6 @@ void User::editPhoneNumber(string _phoneNumber){
 
 }
 
-
-// void User::requestFriend(Node* root, string _name){
-//   if(root != NULL){
-//     return;
-//   }
-//   Node* tmp = root;
-//   while(tmp != NULL){
-//     if(_name == tmp->data.getUsername()){
-//       friendList.insert(tmp);
-//       friendRequest.insert(0);
-//     }
-//     tmp = tmp->next;
-//   }
-// }
-
-// void User::insertFriend(Node* root, string _name){
-//   //in developement 
-//   if(root != NULL){
-//     return;
-//   }
-
-// }
-
 void User::createWallPost(string _post){
   // WallPost newPost(_post, username);
   // wall.insert(newPost);
@@ -225,28 +198,24 @@ string User::getUsername() const{
   return username;
 }
 
-string User::getName(){
+string User::getName() const{
   return name;
 }
 
-string User::getPassword(){
+string User::getPassword() const{
   return password;
 }
 
-string User::getPhoneNumber(){
+string User::getPhoneNumber() const{
   return phoneNumber;
 }
 
-string User::getWall(){
+string User::getWall() const{
   //return wall.getWallList();
   return "";
 }
 
-// UserFriends User::getUserFriends(){
-//   return friends;
-// }
-
-string User::displayInfo(){
+string User::displayInfo() const{
   string info = "Username: " + username +"\n" + "Name: " + name + "\n" + "Password: " + password + "\n" + "Phonenumber: "+ phoneNumber;
   return info;
 }

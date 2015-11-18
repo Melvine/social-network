@@ -18,7 +18,7 @@ int main(){
 
 
 
-	// UserNetwork facebook;
+	// UserNetwork facebookc;
 	// facebook.readNetwork("infile.txt");
 	// int running, main_menu_option = 0;
 	// string name, username, password, phonenumber, post;
@@ -219,7 +219,8 @@ int main(){
 
 	// userList->insert(0, a);
 	//userList->remove(0);
-	UserNetwork network(x);
+	UserNetwork network;
+	// network.readNetwork("infile.txt");
 	network.insert(y);
 	network.remove(1);
 

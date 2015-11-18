@@ -21,12 +21,12 @@ class User {
     void editPassword(string);
     void editPhoneNumber(string);
 
-    string displayInfo();
+    string displayInfo() const;
     string getUsername() const;
-    string getName();
-    string getPassword();
-    string getPhoneNumber();
-    string getWall();
+    string getName() const;
+    string getPassword() const;
+    string getPhoneNumber() const;
+    string getWall() const;
     //UserFriends getUserFriends();
 
 
@@ -39,10 +39,6 @@ class User {
     string name;
     string password;
     string phoneNumber;
-    //Wall wall;
-    //UserFriends friends;
-    //DoublyLinkedList<User> friendList;
-    //vector<int> friendRequest;
 };
 
 class UserNetwork {
@@ -56,8 +52,8 @@ class UserNetwork {
         void remove(int);
         // string searchUser(string);
         // void writeNetwork(char *);
-        // void readNetwork(const char *);
-        // User* login(string, string);
+        void readNetwork(const char *);
+        const User login(string, string);
         // int validateUser(string);
 
         string getUserList();
